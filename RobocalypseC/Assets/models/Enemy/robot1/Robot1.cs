@@ -192,6 +192,5 @@ public class Robot1 : AIObjects
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectRange);
-        
     }
 }

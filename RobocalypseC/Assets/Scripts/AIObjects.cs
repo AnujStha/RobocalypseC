@@ -134,6 +134,7 @@ public class AIObjects : MonoBehaviour
         Controller.Move(Direction);
         DontCheckGround = false;
         Anim.SetBool("isWalking",is_walking);
+
     }
     protected void turnAtPlayer() {
         FindPlayerSide();

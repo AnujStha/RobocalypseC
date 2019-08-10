@@ -46,7 +46,7 @@ AvatarMask:
   - m_Path: Armature/root/torso/upperHand.R
     m_Weight: 0
   - m_Path: Armature/root/torso/upperHand.R/gun.R
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Armature/root/torso/upperHand.R/gun.R/gun.R_end
     m_Weight: 0
   - m_Path: Armature/root/upperLeg.L

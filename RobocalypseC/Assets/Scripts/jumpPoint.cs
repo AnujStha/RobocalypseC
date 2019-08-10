@@ -11,7 +11,7 @@ public class jumpPoint : MonoBehaviour
         {
             AIObjects ai = other.GetComponent<AIObjects>();
             if (ai != null) {
-              if(ai.heading()==PositiveDirection)ai.jump();
+              if(ai.Heading()==PositiveDirection)ai.Jump();
             }
 
         }
@@ -23,7 +23,7 @@ public class jumpPoint : MonoBehaviour
             AIObjects ai = other.GetComponent<AIObjects>();
             if (ai != null)
             {
-                if(ai.heading()==PositiveDirection)ai.jump();
+                if(ai.Heading()==PositiveDirection)ai.Jump();
             }
 
         }

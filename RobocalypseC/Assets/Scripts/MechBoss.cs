@@ -1,19 +1,17 @@
 ﻿
 using UnityEngine;
 
-public class MechBoss : MonoBehaviour
+public class MechBoss : AIObjects_Ranged
 {
-    public gameManager GameManager;
-    private GameObject player;
     public Animator anim;
     [Range(0,1)]
     public float rightRotation;
     [Range(0, 1)]
     public float leftRotation;
-    [Range(0, 1)]
-    public float rightGunRotation;
-    [Range(0, 1)]
-    public float leftGunRotation;
+
+    [Header("Sensors")]
+    public bool active;
+
     public float rotationsmoother;
     [Header("hand and guns")]
     public Transform handL;
@@ -21,9 +19,9 @@ public class MechBoss : MonoBehaviour
     public Transform gunL;
     public Transform gunR;
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        player = GameManager.Player;
+        base.Start();
     }
 
     // Update is called once per frame
@@ -31,36 +29,35 @@ public class MechBoss : MonoBehaviour
     {
         anim.SetFloat("handR", rightRotation);
         anim.SetFloat("handL", leftRotation);
-        anim.SetFloat("gunR", rightGunRotation);
-        pointGunLToPlayer();
-        pointGunRToPlayer();
-    }
+        PointGunRToPlayer();
+        PointGunLToPlayer();
 
-    void pointGunRToPlayer() {
-        float angle = Vector3.Angle(player.transform.position - gunR.transform.position, new Vector3(0, 0, 1));
-        angle /= 180;
-        if (player.transform.position.y < gunR.position.y) {
-            angle *= -1;
-        }
-        angle += .5f;
         
     }
-    void pointGunLToPlayer() {
-        float angle = Vector3.Angle(player.transform.position - gunL.transform.position, new Vector3(0, 0, 1));
-        if (player.transform.position.y < gunL.position.y)
-        {
-            angle *= -1;
-        }
-        angle /= 180;
-        angle += .5f;
-        anim.SetFloat("gunL", Mathf.Lerp(anim.GetFloat("gunL"),angle,rotationsmoother));
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
     }
 
-    void pointRightMessileToPlayer() {
+    public override void Attack()
+    {
+        is_walking = false;
+    }
+    void PointGunRToPlayer() {
+        float angle = TargetAngle(gunR.position, player.transform.position);
+        anim.SetFloat("gunR", Mathf.Lerp(anim.GetFloat("gunR"), angle, rotationsmoother * Time.deltaTime));
+    }
+    void PointGunLToPlayer() {
+        float angle = TargetAngle(gunL.position, player.transform.position);
+        anim.SetFloat("gunL", Mathf.Lerp(anim.GetFloat("gunL"),angle,rotationsmoother*Time.deltaTime));
+    }
+    void PointRightMessileToPlayer() {
 
     }
+    void PointLeftMessileToPlayer() {
 
-    void pointLeftMessileToPlayer() {
+    }
+    void Movement() {
 
     }
 }

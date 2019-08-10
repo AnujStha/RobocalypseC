@@ -132,7 +132,6 @@ public class Robot1 : AIObjects
     }
     void shoot() {
         //pointAtPlayer
-        RaycastHit hit;
         Anim.SetFloat("lookDirection", Mathf.Lerp(Anim.GetFloat("lookDirection"), target() + targetOffset - targetOffset * (DistanceBetweenPlayerAndThis - attackRange) / DistanceBetweenPlayerAndThis, targetSmoother));
         moving = false;
         GunPlaceHolder.shoot();

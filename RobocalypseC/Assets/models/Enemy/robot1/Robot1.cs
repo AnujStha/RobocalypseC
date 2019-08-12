@@ -16,7 +16,6 @@ private GunPlaceHolder gunPlaceHolder;
     public override void FixedUpdate()
     {
         base.FixedUpdate();
-        Anim.SetBool("isWalking", is_walking);
     }
     public override void move()
     {

@@ -5,11 +5,11 @@ using UnityEngine;
 public class AIObjects_Ranged : AIObjects
 {
     [Header("Movement")]
-
-
     public float targetSmoother;
     [Range(-1, 1)]
     public float targetOffset;
+    [Range(-1, 1)]
+    public float distanceBetweenPlayerOffset;
     protected float TargetAngle(Vector3 piviot,Vector3 target)
     {
         float angle = Vector3.Angle(target - piviot, new Vector3(0, 0, 1));
@@ -34,6 +34,6 @@ public class AIObjects_Ranged : AIObjects
             angle /= 2;
             angle += 0.5f;
         }
-        return angle;
+        return angle+targetOffset+DistanceBetweenPlayerAndThis*distanceBetweenPlayerOffset/attackRange;
     }
 }

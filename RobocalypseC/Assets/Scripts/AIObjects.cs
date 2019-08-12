@@ -19,6 +19,7 @@ public class AIObjects : MonoBehaviour
     protected GameObject player;
     public gameManager Manager;
     public bool is_walking;
+    protected bool RestrictMoving=false;
 
     protected float initialVelocity;
     protected float inAirTime;
@@ -37,29 +38,31 @@ public class AIObjects : MonoBehaviour
     }
     public virtual void FixedUpdate()
     {
-        move();
-        turnAtPlayer();
         DistanceBetweenPlayerAndThis = Vector3.Distance(player.transform.position, transform.position);
         DummyChaseAtPlayer();
        
     }
-
     protected void DummyChaseAtPlayer() {
+       
         if (DistanceBetweenPlayerAndThis < detectRange)
         {
             turnAtPlayer();
+          
             if (DistanceBetweenPlayerAndThis < attackRange)
             {
                 Attack();
+                is_walking = false;
+                Anim.SetBool("isWalking", false);
             }
             else
             {
-                Chase();
+                move();
             }
         }
         else
         {
             is_walking = false;
+            Anim.SetBool("isWalking", false);
         }
     } 
     public virtual void Attack() {
@@ -124,16 +127,13 @@ public class AIObjects : MonoBehaviour
     public virtual void Jump() {
 
     }
-    protected void Chase()
+    public virtual void move()
     {
-        is_walking = true;
-    }
-    public virtual void move() {
-        Vector3 Direction = new Vector3(0, verticalVelocity, (movingPositive ? 1 : -1) * (is_walking ? 1 : 0) * Speed) * Time.deltaTime;
-        gravity();
-        Controller.Move(Direction);
-        DontCheckGround = false;
-        Anim.SetBool("isWalking",is_walking);
+            Vector3 Direction = new Vector3(0, verticalVelocity, (movingPositive ? 1 : -1) * (RestrictMoving? 0 : 1) * Speed) * Time.deltaTime;
+            gravity();
+            Controller.Move(Direction);
+            DontCheckGround = false;
+            Anim.SetBool("isWalking", !RestrictMoving);
     }
     protected void turnAtPlayer() {
         FindPlayerSide();

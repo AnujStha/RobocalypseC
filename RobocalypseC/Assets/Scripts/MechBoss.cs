@@ -38,21 +38,6 @@ public class MechBoss : AIObjects_Ranged
     {
         base.Start();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        anim.SetFloat("handR", rightRotation);
-        anim.SetFloat("handL", leftRotation);
-        PointGunRToPlayer();
-        PointGunLToPlayer();
-
-        if (active&&!ActionRunning) {
-            MechBossAIStart();
-            ActionRunning=true;
-        }
-     
-    }
     public override void FixedUpdate()
     {
         DistanceBetweenPlayerAndThis = Vector3.Distance(player.transform.position, transform.position);
@@ -85,13 +70,7 @@ public class MechBoss : AIObjects_Ranged
         float angle = TargetAngle(gunL.position, player.transform.position);
         anim.SetFloat("gunL", Mathf.Lerp(anim.GetFloat("gunL"),angle,targetSmoother*Time.deltaTime));
     }
-    void PointRightMessileToPlayer() {
-
-    }
-    void PointLeftMessileToPlayer() {
-
-    }
-    void Movement() {
+    void AimMessile (){
 
     }
     void DefaultBullet() {

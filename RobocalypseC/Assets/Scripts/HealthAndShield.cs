@@ -22,8 +22,12 @@ public class HealthAndShield : MonoBehaviour
     public float depletonDecreaseSmoothRate;
     private bool healthDepletionMeterFollow=true;
     private float shieldDepletionReference, HealthDepletionReference;
+    public Animator fadeInAndOut;
+    public float healthBarShowTime;
+    private float healthBarShowCounter;
     [Header("FlyingText")]
     public GameObject FlyingText;
+    public Transform FlyingTextOrigin;
     public Color shieldDepletionColour, healthDepletionColour;
 
     // Start is called before the first frame update
@@ -32,6 +36,7 @@ public class HealthAndShield : MonoBehaviour
         healthDepletionMeterFollow = true;
         HealthDepletionReference = MaxHealth;
         shieldDepletionReference = MaxShield;
+        healthBarShowCounter = healthBarShowTime;
     }
 
     private void Awake()
@@ -47,6 +52,14 @@ public class HealthAndShield : MonoBehaviour
     {
         if (healthBarPresent)
         {
+            if (healthBarShowCounter < 0)
+            {
+                fadeInAndOut.SetTrigger("fadeOut");
+               
+            }
+            else {
+                healthBarShowCounter -= Time.fixedDeltaTime;
+            }
             healthBar.fillAmount = health / MaxHealth;
             shieldBar.fillAmount = Shield / MaxShield;
             healthBarDepletionIndicator.fillAmount = HealthDepletionReference/MaxHealth;
@@ -64,24 +77,32 @@ public class HealthAndShield : MonoBehaviour
     }
 
     public void damage(float damage, float healthDamageRatio, float ShieldDamageRatio) {
+        healthBarShowCounter = healthBarShowTime;
+        fadeInAndOut.SetTrigger("fadeIn");
         if (healthDepletionMeterFollow&&healthBarPresent) { 
         StartCoroutine(showReference());
     }
         if (Shield > damage * ShieldDamageRatio)
         {
             Shield -= damage * ShieldDamageRatio;
+            FlyingTextMake(shieldDepletionColour, (damage * ShieldDamageRatio).ToString());
             StartCoroutine(ShieldRechargeDelayCounter());
         }
-        else {
-
+        else
+        {
+            if (Shield != 0) { 
             damage -= Shield / ShieldDamageRatio;
+            FlyingTextMake(shieldDepletionColour, (damage * Shield / ShieldDamageRatio).ToString());
             Shield = 0;
+        }
             if (health > damage * healthDamageRatio)
             {
-                
+                FlyingTextMake(healthDepletionColour, (damage * healthDamageRatio).ToString());
+
                 health -= damage * healthDamageRatio;
             }
             else {
+                FlyingTextMake(healthDepletionColour, (health).ToString());
                 health = 0;
                 IsAlive = false;
             }
@@ -128,5 +149,11 @@ public class HealthAndShield : MonoBehaviour
         yield return new WaitForSeconds(depletionShowTime);
         healthDepletionMeterFollow = true;
 
+    }
+
+    void FlyingTextMake(Color col, string val) {
+        GameObject Text = Instantiate(FlyingText, FlyingTextOrigin);
+        Text.GetComponent<FlyingText>().colour = col;
+        Text.GetComponent<FlyingText>().value = val;
     }
 }

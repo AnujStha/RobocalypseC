@@ -9,13 +9,13 @@ public class GunPlaceHolder : MonoBehaviour
     public GameObject ActiveGun;
     public bool Player;
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         transform.position = new Vector3(0, (hand1.position.y + hand2.position.y) / 2, (hand1.position.z + hand2.position.z) / 2);
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    public virtual void LateUpdate()
     {
         transform.position = new Vector3(0, (hand1.position.y + hand2.position.y) / 2, (hand1.position.z + hand2.position.z) / 2);
         transform.LookAt(new Vector3(0, hand2.position.y, hand2.position.z));

@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public bool facingPositive;
     public float overheadClearance;
     public float GroundClearance;
+    public Transform[] groundCheckPoint;
     public GameObject piviot;
     private CharacterController Controller;
  
@@ -39,33 +40,16 @@ public class PlayerController : MonoBehaviour
         gunHolder = GetComponentInChildren<GunPlaceHolder>();
         Gravity = manager.Gravity;
     }
-
-
-
-
     // Update is called once per frame
     void Update()
     {
         move(); 
         point_at_mouse();
         //Debug.Log(verticalVelocity+" "+inAirtime);
-        if (Input.GetAxis("Fire1") == 1)
-        {
-            
-            isShooting = gunHolder.shoot() ;
-        }
-        else
-        {
-           isShooting = false;
-        }
+
 
 
     }
-
-
-
-
-
     void move() {
         Anim = GetComponent<Animator>();
         Controller = GetComponent<CharacterController>();
@@ -73,7 +57,7 @@ public class PlayerController : MonoBehaviour
         if (GroundedCheck())
         {
             initialVelocity = 0;
-            if (Input.GetAxis("Jump") == 1)
+            if (Input.GetButtonDown("Jump"))
             {
                 // Debug.Log("jump");
                 initialVelocity = jumpForce;
@@ -149,13 +133,6 @@ public class PlayerController : MonoBehaviour
         //Debug.Log(animationBlend);
         Anim.SetFloat("Speed", animationBlend);
     }
-
-
-
-
-
-
-
     bool overhead_check() {
         RaycastHit hit;
         bool isStruck=false;
@@ -171,29 +148,21 @@ public class PlayerController : MonoBehaviour
 
        
     }
-
-  
-
-
-
     bool GroundedCheck()
     {
         RaycastHit hit;
         bool isGrounded=false;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, GroundClearance))
+        foreach (Transform point in groundCheckPoint)
         {
-            if(!hit.collider.isTrigger)
-            isGrounded = true;
+            if (Physics.Raycast(point.position, Vector3.down, out hit, GroundClearance))
+            {
+                if (!hit.collider.isTrigger)
+                    isGrounded = true;
+            }
         }
-      
         Anim.SetBool("Grounded", isGrounded);
         return isGrounded;
     }
-
-
-
-
-
     void point_at_mouse()
     {   
         Vector2 mouseposition = Input.mousePosition;
@@ -233,12 +202,6 @@ public class PlayerController : MonoBehaviour
         //Debug.Log (dir.x);
 
     }
-
-
-
-
-
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

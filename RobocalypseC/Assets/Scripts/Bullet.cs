@@ -18,14 +18,15 @@ public class Bullet : MonoBehaviour {
 
 
 	void Start () {
-		bulletRB = gameObject.GetComponent<Rigidbody> ();
+        Debug.Log("Called");
+        bulletRB = gameObject.GetComponent<Rigidbody> ();
 		Vector3 bulletDirection = new Vector3 (0,0,bulletSpeed);
 		bulletDirection = gameObject.transform.rotation*bulletDirection;
 		bulletRB.AddForce (bulletDirection, ForceMode.Force);
         Destroy(gameObject, BulletLife);
 	}
 	void OnTriggerEnter(Collider col){
-        if ((col.gameObject.tag == "Enemy" && FromPlayer)||(col.gameObject.tag=="Player"&&!FromPlayer)) {
+        if ((col.gameObject.CompareTag ("Enemy") && FromPlayer)||(col.gameObject.CompareTag("Player")&&!FromPlayer)||col.gameObject.CompareTag("Destroyable")) {
             col.gameObject.GetComponent<HealthAndShield>().damage(damage, healthDamageRatio, ShieldDamageRatio);
         }
         destroy();

@@ -77,11 +77,14 @@ public class HealthAndShield : MonoBehaviour
     }
 
     public void damage(float damage, float healthDamageRatio, float ShieldDamageRatio) {
+        if (healthBarPresent) { 
         healthBarShowCounter = healthBarShowTime;
         fadeInAndOut.SetTrigger("fadeIn");
-        if (healthDepletionMeterFollow&&healthBarPresent) { 
-        StartCoroutine(showReference());
-    }
+            if (healthDepletionMeterFollow && healthBarPresent)
+            {
+                StartCoroutine(showReference());
+            }
+        }
         if (Shield > damage * ShieldDamageRatio)
         {
             Shield -= damage * ShieldDamageRatio;
@@ -105,6 +108,7 @@ public class HealthAndShield : MonoBehaviour
                 FlyingTextMake(healthDepletionColour, (health).ToString());
                 health = 0;
                 IsAlive = false;
+                GetComponent<IKillable>().dead();
             }
             StartCoroutine(HealthRechargeDelayCounter());
         }

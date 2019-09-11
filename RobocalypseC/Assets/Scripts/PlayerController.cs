@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour,IKillable
 {
     private GunPlaceHolder gunHolder;
     public gameManager manager;
@@ -206,5 +206,10 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Debug.DrawRay(piviot.transform.position + new Vector3(0, overheadClearance, 0), Vector3.up);
+    }
+
+    public void dead()
+    {
+        throw new System.NotImplementedException();
     }
 }

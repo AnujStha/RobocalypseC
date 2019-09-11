@@ -40,6 +40,8 @@ public class AIObjects : MonoBehaviour
     {
         DistanceBetweenPlayerAndThis = Vector3.Distance(player.transform.position, transform.position);
         DummyChaseAtPlayer();
+        transform.position.Set(0, transform.position.y, transform.position.z);
+        
        
     }
     protected void DummyChaseAtPlayer() {

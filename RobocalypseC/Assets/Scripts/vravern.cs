@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class vravern : AIObjects
+public class vravern : AIObjects,IKillable
 {
     public float attack1Time;
     public bool attacking=false;
@@ -32,5 +32,10 @@ public class vravern : AIObjects
         yield return new WaitForSeconds(time);
         RestrictMoving = false;
         attacking = false;
+    }
+
+    public void dead()
+    {
+        throw new System.NotImplementedException();
     }
 }

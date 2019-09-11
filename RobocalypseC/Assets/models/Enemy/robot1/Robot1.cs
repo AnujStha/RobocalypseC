@@ -1,6 +1,6 @@
 ﻿
 using UnityEngine;
-public class Robot1 : AIObjects_Ranged
+public class Robot1 : AIObjects_Ranged,IKillable
 {
 private GunPlaceHolder gunPlaceHolder;
     [Header("Status")]
@@ -45,8 +45,8 @@ private GunPlaceHolder gunPlaceHolder;
        
     }
 
-
-
-
-
+    public void dead()
+    {
+        throw new System.NotImplementedException();
+    }
 }

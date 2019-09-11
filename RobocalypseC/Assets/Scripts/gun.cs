@@ -40,6 +40,17 @@ public class gun : MonoBehaviour {
 		ReloadCount = reloadTime;
         FireReady = true;
 	}
+	void Update(){
+		
+		if (reloading) {
+			ReloadCount -= Time.deltaTime;
+			if (ReloadCount < 0) {
+			
+				reload ();
+			}
+		}
+	
+	}//Update
     public void shoot(bool fromPlayer) {
 
         if (FireReady&&!reloading){
@@ -124,17 +135,6 @@ public class gun : MonoBehaviour {
 
 
 	}
-	void Update(){
-		
-		if (reloading) {
-			ReloadCount -= Time.deltaTime;
-			if (ReloadCount < 0) {
-			
-				reload ();
-			}
-		}
-	
-	}//Update
 	void NoAmmo(){
 		noAmmo = true;
 		//noAmmoUI.NoAmmo = true;

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class MechBoss : AIObjects_Ranged
+public class MechBoss : AIObjects_Ranged,IKillable
 {
     public Animator anim;
     [Range(0, 1)]
@@ -117,5 +117,10 @@ public class MechBoss : AIObjects_Ranged
         yield return new WaitForSeconds(time);
         ActionRunning = false;
         bulletTriggerCounter = 0;
+    }
+
+    public void dead()
+    {
+        throw new System.NotImplementedException();
     }
 }

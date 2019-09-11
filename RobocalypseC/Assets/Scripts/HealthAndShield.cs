@@ -155,9 +155,13 @@ public class HealthAndShield : MonoBehaviour
 
     }
 
-    void FlyingTextMake(Color col, string val) {
-        GameObject Text = Instantiate(FlyingText, FlyingTextOrigin);
-        Text.GetComponent<FlyingText>().colour = col;
-        Text.GetComponent<FlyingText>().value = val;
+    void FlyingTextMake(Color col, string val)
+    {
+        if (healthBarPresent)
+        {
+            GameObject Text = Instantiate(FlyingText, FlyingTextOrigin);
+            Text.GetComponent<FlyingText>().colour = col;
+            Text.GetComponent<FlyingText>().value = val;
+        }
     }
 }

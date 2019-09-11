@@ -12,6 +12,8 @@ public class GunPlaceHolderPlayer : GunPlaceHolder
     public bool holdingPrimary;
     private PlayerController playerSc;
     private int firemode;
+    private float GrenadeHoldTime;
+    public float grenadeMaxHoldTime;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -28,7 +30,17 @@ public class GunPlaceHolderPlayer : GunPlaceHolder
         if (Input.GetButtonDown("Reload")) {
             ActiveGun.GetComponent<gun>().reload();
         }
-
+        if (Input.GetButton("Grenade")) {
+            if(GrenadeHoldTime<grenadeMaxHoldTime)
+            GrenadeHoldTime += Time.deltaTime;
+        }
+        if (Input.GetButtonUp("Grenade"))
+        {
+            Transform tip = ActiveGun.GetComponent<gun>().tip.transform;
+            Grenades G = Instantiate(Grenades[ActiveGrenade], tip.position,tip.rotation).GetComponent<Grenades>();
+            G.GrenadeAimTime = GrenadeHoldTime / grenadeMaxHoldTime;
+            GrenadeHoldTime = 0;
+        }
         switch (firemode) {
             case 1:
                 if (Input.GetButton("Fire1"))

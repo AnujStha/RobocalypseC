@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Traploke : AIObjects
+public class Traploke : AIObjects,IKillable
 {
     public bool attacking;
     public float attack1Time;
@@ -44,5 +44,10 @@ public class Traploke : AIObjects
         yield return new WaitForSeconds(time);
         RestrictMoving = false;
         attacking = false;
+    }
+
+    public void dead()
+    {
+        throw new System.NotImplementedException();
     }
 }

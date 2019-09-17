@@ -48,6 +48,11 @@ public class Traploke : AIObjects,IKillable
 
     public void dead()
     {
-        throw new System.NotImplementedException();
+        Anim.SetTrigger("death");
+        is_alive = false;
+        Collider[] col= GetComponents<Collider>();
+        foreach (Collider collider in col) {
+            collider.enabled = false;
+        }
     }
 }

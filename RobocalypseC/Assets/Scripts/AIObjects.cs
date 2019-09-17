@@ -19,6 +19,7 @@ public class AIObjects : MonoBehaviour
     protected GameObject player;
     public gameManager Manager;
     public bool is_walking;
+    public bool is_alive = true;
     protected bool RestrictMoving=false;
 
     protected float initialVelocity;
@@ -38,11 +39,13 @@ public class AIObjects : MonoBehaviour
     }
     public virtual void FixedUpdate()
     {
-        DistanceBetweenPlayerAndThis = Vector3.Distance(player.transform.position, transform.position);
-        DummyChaseAtPlayer();
-        transform.position.Set(0, transform.position.y, transform.position.z);
-        
-       
+        if (is_alive)
+        {
+            DistanceBetweenPlayerAndThis = Vector3.Distance(player.transform.position, transform.position);
+            DummyChaseAtPlayer();
+            transform.position.Set(0, transform.position.y, transform.position.z);
+        }
+        gravity();
     }
     protected void DummyChaseAtPlayer() {
        
@@ -132,7 +135,6 @@ public class AIObjects : MonoBehaviour
     public virtual void move()
     {
             Vector3 Direction = new Vector3(0, verticalVelocity, (movingPositive ? 1 : -1) * (RestrictMoving? 0 : 1) * Speed) * Time.deltaTime;
-            gravity();
             Controller.Move(Direction);
             DontCheckGround = false;
             Anim.SetBool("isWalking", !RestrictMoving);

@@ -77,43 +77,48 @@ public class HealthAndShield : MonoBehaviour
     }
 
     public void damage(float damage, float healthDamageRatio, float ShieldDamageRatio) {
-        if (healthBarPresent) { 
-        healthBarShowCounter = healthBarShowTime;
-        fadeInAndOut.SetTrigger("fadeIn");
-            if (healthDepletionMeterFollow && healthBarPresent)
-            {
-                StartCoroutine(showReference());
-            }
-        }
-        if (Shield > damage * ShieldDamageRatio)
+        if (IsAlive)
         {
-            Shield -= damage * ShieldDamageRatio;
-            FlyingTextMake(shieldDepletionColour, (damage * ShieldDamageRatio).ToString());
-            StartCoroutine(ShieldRechargeDelayCounter());
-        }
-        else
-        {
-            if (Shield != 0) { 
-            damage -= Shield / ShieldDamageRatio;
-            FlyingTextMake(shieldDepletionColour, (damage * Shield / ShieldDamageRatio).ToString());
-            Shield = 0;
-        }
-            if (health > damage * healthDamageRatio)
+            if (healthBarPresent)
             {
-                FlyingTextMake(healthDepletionColour, (damage * healthDamageRatio).ToString());
+                healthBarShowCounter = healthBarShowTime;
+                fadeInAndOut.SetTrigger("fadeIn");
+                if (healthDepletionMeterFollow && healthBarPresent)
+                {
+                    StartCoroutine(showReference());
+                }
+            }
+            if (Shield > damage * ShieldDamageRatio)
+            {
+                Shield -= damage * ShieldDamageRatio;
+                FlyingTextMake(shieldDepletionColour, (damage * ShieldDamageRatio).ToString());
+                StartCoroutine(ShieldRechargeDelayCounter());
+            }
+            else
+            {
+                if (Shield != 0)
+                {
+                    damage -= Shield / ShieldDamageRatio;
+                    FlyingTextMake(shieldDepletionColour, (damage * Shield / ShieldDamageRatio).ToString());
+                    Shield = 0;
+                }
+                if (health > damage * healthDamageRatio)
+                {
+                    FlyingTextMake(healthDepletionColour, (damage * healthDamageRatio).ToString());
 
-                health -= damage * healthDamageRatio;
+                    health -= damage * healthDamageRatio;
+                }
+                else
+                {
+                    FlyingTextMake(healthDepletionColour, (health).ToString());
+                    health = 0;
+                    IsAlive = false;
+                    GetComponent<IKillable>().dead();
+                }
+                StartCoroutine(HealthRechargeDelayCounter());
             }
-            else {
-                FlyingTextMake(healthDepletionColour, (health).ToString());
-                health = 0;
-                IsAlive = false;
-                GetComponent<IKillable>().dead();
-            }
-            StartCoroutine(HealthRechargeDelayCounter());
+
         }
-
-
     }
 
     public void recharge(float healthRecharge,float shieldRecharge) {

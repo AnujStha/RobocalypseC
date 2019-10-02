@@ -4,7 +4,7 @@ public class Interactable : MonoBehaviour
 {
     public gameManager manager;
     private float playerDistance;
-    private GameObject player;
+    protected GameObject player;
     public float engageRange;
     public bool inRange;
     void Start()

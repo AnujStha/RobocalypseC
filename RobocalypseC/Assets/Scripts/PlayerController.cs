@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour,IKillable
     public Vector3 boxsize;
     public float jumpMemoryTime;
     private float jumpMemoryCounter;
+    [Header("others")]
+    private List<int> keys = new List<int>();
     // Start is called before the first frame update
     void Start()
     {
@@ -207,7 +209,17 @@ public class PlayerController : MonoBehaviour,IKillable
         Debug.DrawRay(piviot.transform.position + new Vector3(0, overheadClearance, 0), Vector3.up);
         Gizmos.DrawCube(groundCheckPoint.position,boxsize);
     }
-
+    public void AddKey(int key) {
+        keys.Add(key);
+        Debug.Log("key:" + key + " added");
+    }//add key to player
+    public bool CheckKey(int key) {
+        bool found=false;
+        foreach (int k in keys) {
+            if (key == k) found = true;
+        }
+        return found;
+    }//check if key is with player
     public void dead()
     {
         Debug.Log("U r dead NOOB");

@@ -13,11 +13,12 @@ public class HealthAndShield : MonoBehaviour
     public float healthRechargeRate;
     public float healthRechargeDelay;
     public float shieldRechargeDelay;
-    public bool HealthRechargeActive;
-    public bool ShieldRechargeActive;
+    private bool HealthRechargeActive;
+    private bool ShieldRechargeActive;
     [Header("UI")]
     public bool healthBarPresent;
     public float depletionShowTime;
+    public GameObject canvas;
     public Image healthBar,shieldBar,healthBarDepletionIndicator,ShieldbarDepletionIndicator;
     public float depletonDecreaseSmoothRate;
     private bool healthDepletionMeterFollow=true;
@@ -52,6 +53,7 @@ public class HealthAndShield : MonoBehaviour
     {
         if (healthBarPresent)
         {
+            canvas.transform.rotation = Quaternion.Euler(new Vector3(0,-90,0));
             if (healthBarShowCounter < 0)
             {
                 fadeInAndOut.SetTrigger("fadeOut");
@@ -91,26 +93,27 @@ public class HealthAndShield : MonoBehaviour
             if (Shield > damage * ShieldDamageRatio)
             {
                 Shield -= damage * ShieldDamageRatio;
-                FlyingTextMake(shieldDepletionColour, (damage * ShieldDamageRatio).ToString());
+                FlyingTextMake(shieldDepletionColour, ((int)(damage * ShieldDamageRatio)).ToString());
                 StartCoroutine(ShieldRechargeDelayCounter());
             }
             else
             {
                 if (Shield != 0)
                 {
+                    FlyingTextMake(shieldDepletionColour, ((int)Shield).ToString());
                     damage -= Shield / ShieldDamageRatio;
-                    FlyingTextMake(shieldDepletionColour, (damage * Shield / ShieldDamageRatio).ToString());
                     Shield = 0;
+                    StartCoroutine(ShieldRechargeDelayCounter());
                 }
                 if (health > damage * healthDamageRatio)
                 {
-                    FlyingTextMake(healthDepletionColour, (damage * healthDamageRatio).ToString());
+                    FlyingTextMake(healthDepletionColour, ((int)(damage * healthDamageRatio)).ToString());
 
                     health -= damage * healthDamageRatio;
                 }
                 else
                 {
-                    FlyingTextMake(healthDepletionColour, (health).ToString());
+                    FlyingTextMake(healthDepletionColour, ((int)health).ToString());
                     health = 0;
                     IsAlive = false;
                     GetComponent<IKillable>().dead();
@@ -164,7 +167,7 @@ public class HealthAndShield : MonoBehaviour
     {
         if (healthBarPresent)
         {
-            GameObject Text = Instantiate(FlyingText, FlyingTextOrigin);
+            GameObject Text = Instantiate(FlyingText, FlyingTextOrigin.position,Quaternion.Euler(new Vector3(0,-90,0)));
             Text.GetComponent<FlyingText>().colour = col;
             Text.GetComponent<FlyingText>().value = val;
         }

@@ -27,13 +27,12 @@ public class PlayerController : MonoBehaviour,IKillable
     public bool facingPositive;
     public float overheadClearance;
     public float GroundClearance;
-    public Transform[] groundCheckPoint;
+    public Transform groundCheckPoint;
     public GameObject piviot;
     private CharacterController Controller;
- 
-
- 
-    
+    public Vector3 boxsize;
+    public float jumpMemoryTime;
+    private float jumpMemoryCounter;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,23 +42,28 @@ public class PlayerController : MonoBehaviour,IKillable
     // Update is called once per frame
     void Update()
     {
-        move(); 
+        move();
         point_at_mouse();
         //Debug.Log(verticalVelocity+" "+inAirtime);
-
-
-
+        gameObject.transform.position = new Vector3(0, transform.position.y, transform.position.z);
     }
     void move() {
         Anim = GetComponent<Animator>();
         Controller = GetComponent<CharacterController>();
         //for jump,falling etc related to y axis
+        if (jumpMemoryCounter > 0) {
+            jumpMemoryCounter -= Time.deltaTime;
+        }
+        if (Input.GetButtonDown("Jump"))
+        {
+            jumpMemoryCounter = jumpMemoryTime;
+        }
         if (GroundedCheck())
         {
             initialVelocity = 0;
-            if (Input.GetButtonDown("Jump"))
-            {
+            if (jumpMemoryCounter>0) {
                 // Debug.Log("jump");
+                jumpMemoryCounter = 0;
                 initialVelocity = jumpForce;
                 Anim.SetTrigger("Jump");
             }
@@ -152,13 +156,8 @@ public class PlayerController : MonoBehaviour,IKillable
     {
         RaycastHit hit;
         bool isGrounded=false;
-        foreach (Transform point in groundCheckPoint)
-        {
-            if (Physics.Raycast(point.position, Vector3.down, out hit, GroundClearance))
-            {
-                if (!hit.collider.isTrigger)
-                    isGrounded = true;
-            }
+        if (Physics.BoxCast(groundCheckPoint.position, boxsize, Vector3.down,out hit,Quaternion.identity,GroundClearance)){
+            isGrounded = true;
         }
         Anim.SetBool("Grounded", isGrounded);
         return isGrounded;
@@ -206,10 +205,11 @@ public class PlayerController : MonoBehaviour,IKillable
     {
         Gizmos.color = Color.red;
         Debug.DrawRay(piviot.transform.position + new Vector3(0, overheadClearance, 0), Vector3.up);
+        Gizmos.DrawCube(groundCheckPoint.position,boxsize);
     }
 
     public void dead()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("U r dead NOOB");
     }
 }

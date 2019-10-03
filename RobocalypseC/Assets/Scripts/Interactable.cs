@@ -7,7 +7,7 @@ public class Interactable : MonoBehaviour
     protected GameObject player;
     public float engageRange;
     public bool inRange;
-    void Start()
+    public virtual void Start()
     {
         player = manager.Player;    
     }

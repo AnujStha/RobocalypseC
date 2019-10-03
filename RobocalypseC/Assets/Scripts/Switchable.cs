@@ -2,8 +2,9 @@
 using UnityEngine;
 public class Switchable : MonoBehaviour
 {
-    private bool status;
-   public virtual void Switch() {
+    protected bool status;
+    public Indicator[] Indicators;
+    public virtual void Switch() {
         Debug.Log("switch" + "  " + gameObject.name);
         if (status) off();
         else On();
@@ -15,5 +16,11 @@ public class Switchable : MonoBehaviour
     public virtual void off() {
         Debug.Log("off" + "  " + gameObject.name);
         status = false;
+    }
+    protected void IndicatorSetValue(int value) {
+        foreach (Indicator i in Indicators)
+        {
+            i.SetValue(value);
+        }
     }
 }

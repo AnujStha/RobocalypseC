@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 	public float bulletSpeed;
-	private Rigidbody bulletRB;
+
 	public float damage;
     public float BulletLife;
     public bool FromPlayer;
@@ -17,19 +17,24 @@ public class Bullet : MonoBehaviour {
 
 
 
-	void Start () {
-        Debug.Log("Called");
+	public virtual void Start () {
+
+        Rigidbody bulletRB;
         bulletRB = gameObject.GetComponent<Rigidbody> ();
 		Vector3 bulletDirection = new Vector3 (0,0,bulletSpeed);
 		bulletDirection = gameObject.transform.rotation*bulletDirection;
 		bulletRB.AddForce (bulletDirection, ForceMode.Force);
         Destroy(gameObject, BulletLife);
 	}
-	void OnTriggerEnter(Collider col){
-        if ((col.gameObject.CompareTag ("Enemy") && FromPlayer)||(col.gameObject.CompareTag("Player")&&!FromPlayer)||col.gameObject.CompareTag("Destroyable")) {
+    void OnTriggerEnter(Collider col)
+    {
+        if (!col.isTrigger) { 
+        if ((col.gameObject.CompareTag("Enemy") && FromPlayer) || (col.gameObject.CompareTag("Player") && !FromPlayer) || col.gameObject.CompareTag("Destroyable"))
+        {
             col.gameObject.GetComponent<HealthAndShield>().damage(damage, healthDamageRatio, ShieldDamageRatio);
         }
         destroy();
+    }
 	}
 
     public void destroy()
@@ -37,5 +42,5 @@ public class Bullet : MonoBehaviour {
         Destroy(gameObject);
     }
 
-
+    
 }

@@ -19,6 +19,7 @@ public class DroneShield : MonoBehaviour
     public float ShieldRestoreRate;
     public LineRenderer HealLineRenderer;
     public Transform EnergyPoint;
+    public GameObject ForceField;
     
     // Start is called before the first frame update
     private void Awake(){
@@ -31,6 +32,7 @@ public class DroneShield : MonoBehaviour
     void Start()
     {
         StartCoroutine(AIBurst());
+        ForceField.transform.localScale = new Vector3(effectRange * 2, effectRange * 2, effectRange * 2);
         HealLineRenderer.SetPosition(1, EnergyPoint.position);
         HealLineRenderer.SetPosition(0, EnergyPoint.position);
     }

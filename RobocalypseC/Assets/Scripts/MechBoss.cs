@@ -72,7 +72,7 @@ public class MechBoss : AIObjects_Ranged, IKillable
             GameObject m= Instantiate(messile, messileTip.transform.position,transform.rotation);
             parabolicBullet pb = m.GetComponent<parabolicBullet>();
             pb.distance = Mathf.Abs( DistanceBetweenPlayerAndThis+Random.Range(-messileRandomOffset,messileRandomOffset)+messileCorrection);
-            pb.gravity = Manager.Gravity;
+            pb.gravity = gameManager.Gravity;
             pb.FromPlayer = false;
             bulletTriggerCounter = 1 / messileFireRate;
         }
@@ -166,7 +166,7 @@ public class MechBoss : AIObjects_Ranged, IKillable
         AIStarted = true;
     }
     private void ChooseAction() {
-        if (Random.Range(0f, 1f) < messileProbability||DistanceBetweenPlayerAndThis>attackRange)
+        if (Random.Range(0f, 1f) < messileProbability||DistanceBetweenPlayerAndThis>detectRange)
         {
             firemode = 2;
             StartCoroutine(Messiles());
@@ -181,9 +181,9 @@ public class MechBoss : AIObjects_Ranged, IKillable
         yield return new WaitForSeconds(time);
         ChooseAction();
     }
-
     public void dead()
     {
 
     }
+
 }

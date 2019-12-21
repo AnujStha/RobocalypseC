@@ -73,7 +73,6 @@ public class GunPlaceHolderPlayer : GunPlaceHolder
     {
         base.LateUpdate();
     }
-
     void switchWeapon(){
         if (holdingPrimary)
         {

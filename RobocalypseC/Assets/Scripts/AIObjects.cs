@@ -33,7 +33,7 @@ public class AIObjects : MonoBehaviour
     public virtual void Start()
     {
         player = Manager.Player;
-        Gravity = Manager.Gravity;
+        Gravity = gameManager.Gravity;
         Anim = GetComponentInChildren<Animator>();
         Controller = GetComponent<CharacterController>();
     }

@@ -13,8 +13,6 @@ public class GunPlaceHolder : MonoBehaviour
     {
         transform.position = new Vector3(0, (hand1.position.y + hand2.position.y) / 2, (hand1.position.z + hand2.position.z) / 2);
     }
-
-    // Update is called once per frame
     public virtual void LateUpdate()
     {
         transform.position = new Vector3(0, (hand1.position.y + hand2.position.y) / 2, (hand1.position.z + hand2.position.z) / 2);

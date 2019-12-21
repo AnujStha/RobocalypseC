@@ -1,9 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class gameManager : MonoBehaviour
 {
     public GameObject Player;
-    public float Gravity;
+    public static float Gravity;
+    public float GravityC;
+    private void Awake()
+    {
+        gameManager.Gravity = GravityC;
+        Debug.Log(gameManager.Gravity);
+    }
 }

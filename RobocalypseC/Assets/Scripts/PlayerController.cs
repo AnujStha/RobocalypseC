@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour,IKillable
     void Start()
     {
         gunHolder = GetComponentInChildren<GunPlaceHolder>();
-        Gravity = manager.Gravity;
+        Gravity = gameManager.Gravity;
     }
     // Update is called once per frame
     void Update()

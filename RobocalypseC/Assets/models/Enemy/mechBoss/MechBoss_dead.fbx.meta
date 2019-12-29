@@ -1,0 +1,201 @@
+fileFormatVersion: 2
+guid: 2b9526f9fe4707346b64fae9d8cd0896
+ModelImporter:
+  serializedVersion: 25
+  internalIDToNameTable:
+  - first:
+      74: -2899165592647242154
+    second: Cube.000|defaultPos.002
+  - first:
+      74: 6325152732915670340
+    second: Cube.000|Text001|Take 001|BaseLayer
+  - first:
+      74: 2289450443176581845
+    second: Cube.001|defaultPos.002
+  - first:
+      74: 7819194833192796829
+    second: Cube.001|Text001|Take 001|BaseLayer
+  - first:
+      74: -2651026114801453803
+    second: Cube.002|defaultPos.002
+  - first:
+      74: -4522894824685612195
+    second: Cube.002|Text001|Take 001|BaseLayer
+  - first:
+      74: -893571850787874941
+    second: Cube.004|defaultPos.002
+  - first:
+      74: -1222371282815546755
+    second: Cube.004|Text001|Take 001|BaseLayer
+  - first:
+      74: 8082464107210400647
+    second: Cube.005|defaultPos.002
+  - first:
+      74: 9129528546758784109
+    second: Cube.005|Text001|Take 001|BaseLayer
+  - first:
+      74: 602105104131678592
+    second: Cube.006|defaultPos.002
+  - first:
+      74: 8851096936069804564
+    second: Cube.006|Text001|Take 001|BaseLayer
+  - first:
+      74: -5370558860943718213
+    second: Cube.007|defaultPos.002
+  - first:
+      74: 3328041299995019890
+    second: Cube.007|Text001|Take 001|BaseLayer
+  - first:
+      74: -7908888891006299586
+    second: Cube.008|defaultPos.002
+  - first:
+      74: 4748696776005225832
+    second: Cube.008|Text001|Take 001|BaseLayer
+  - first:
+      74: -3156356024570026147
+    second: Cube.009|defaultPos.002
+  - first:
+      74: -5517875084668297119
+    second: Cube.009|Text001|Take 001|BaseLayer
+  - first:
+      74: 6048291481083387088
+    second: Cube.010|defaultPos.002
+  - first:
+      74: 7371180689636774857
+    second: Cube.010|Text001|Take 001|BaseLayer
+  - first:
+      74: -5481860411940453593
+    second: Cube.011|defaultPos.002
+  - first:
+      74: 9134760656761327428
+    second: Cube.011|Text001|Take 001|BaseLayer
+  - first:
+      74: 2161270237033537251
+    second: Cube.012|defaultPos.002
+  - first:
+      74: 923730446163112994
+    second: Cube.012|Text001|Take 001|BaseLayer
+  - first:
+      74: -3722825585302381372
+    second: Cube.013|defaultPos.002
+  - first:
+      74: 5161266611230641318
+    second: Cube.013|Text001|Take 001|BaseLayer
+  - first:
+      74: 7626901347069158332
+    second: Cube.014|defaultPos.002
+  - first:
+      74: 281276762514504999
+    second: Cube.014|Text001|Take 001|BaseLayer
+  - first:
+      74: -3295754757616868937
+    second: Cube.015|defaultPos.002
+  - first:
+      74: -4268885630238888816
+    second: Cube.015|Text001|Take 001|BaseLayer
+  - first:
+      74: 2996176579694994037
+    second: Cube.016|defaultPos.002
+  - first:
+      74: -1912092970950185684
+    second: Cube.016|Text001|Take 001|BaseLayer
+  - first:
+      74: 5390413704498138653
+    second: Cube.017|defaultPos.002
+  - first:
+      74: 5005287257804540198
+    second: Cube.017|Text001|Take 001|BaseLayer
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MechBot
+    second: {fileID: 2100000, guid: d97e0318135df12408069a7aace8acb8, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

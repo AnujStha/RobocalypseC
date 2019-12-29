@@ -123,7 +123,6 @@ public class HealthAndShield : MonoBehaviour
 
         }
     }
-
     public void recharge(float healthRecharge,float shieldRecharge) {
         if (health < MaxHealth - healthRecharge)
         {
@@ -141,8 +140,6 @@ public class HealthAndShield : MonoBehaviour
             Shield = MaxShield;
         }
     }
-
-
     IEnumerator ShieldRechargeDelayCounter() {
         ShieldRechargeActive = false;
         yield return new WaitForSeconds(shieldRechargeDelay);

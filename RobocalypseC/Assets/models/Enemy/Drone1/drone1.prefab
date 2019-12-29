@@ -9850,6 +9850,7 @@ MonoBehaviour:
   HealLineRenderer: {fileID: 601864714}
   EnergyPoint: {fileID: 1375008776251417407}
   ForceField: {fileID: 399189510}
+  isAlive: 1
 --- !u!135 &7683032380604800907
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9875,16 +9876,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 742805b915aa50f46ac3548ab1ba2fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  MaxHealth: 100
+  health: 500
+  MaxHealth: 500
   Shield: 100
-  MaxShield: 100
+  MaxShield: 500
   IsAlive: 1
   shieldRechargeRate: 4
   healthRechargeRate: 1
   healthRechargeDelay: 1
   shieldRechargeDelay: 2
-  healthBarPresent: 0
+  healthBarPresent: 1
   depletionShowTime: 0.21
   canvas: {fileID: 5515141805772262020}
   healthBar: {fileID: 5515141805844690215}

@@ -17,7 +17,6 @@ public class AIObjects : MonoBehaviour
     public bool is_inAir;
     protected float DistanceBetweenPlayerAndThis;
     protected GameObject player;
-    public gameManager Manager;
     public bool is_walking;
     public bool is_alive = true;
     protected bool RestrictMoving=false;
@@ -32,7 +31,7 @@ public class AIObjects : MonoBehaviour
 
     public virtual void Start()
     {
-        player = Manager.Player;
+        player = gameManager.player;
         Gravity = gameManager.Gravity;
         Anim = GetComponentInChildren<Animator>();
         Controller = GetComponent<CharacterController>();

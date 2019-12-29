@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroneShield : MonoBehaviour
+public class DroneShield : MonoBehaviour,IKillable
 {
     public gameManager gameManager;
     public GameObject Player;
@@ -20,6 +20,7 @@ public class DroneShield : MonoBehaviour
     public LineRenderer HealLineRenderer;
     public Transform EnergyPoint;
     public GameObject ForceField;
+    public bool isAlive=true;
     
     // Start is called before the first frame update
     private void Awake(){
@@ -35,33 +36,37 @@ public class DroneShield : MonoBehaviour
         ForceField.transform.localScale = new Vector3(effectRange * 2, effectRange * 2, effectRange * 2);
         HealLineRenderer.SetPosition(1, EnergyPoint.position);
         HealLineRenderer.SetPosition(0, EnergyPoint.position);
+        isAlive = GetComponent<HealthAndShield>().IsAlive;
     }
-
     // Update is called once per frame
     void FixedUpdate()
     {
-        HealLineRenderer.SetPosition(0, EnergyPoint.position);
-        if (GetComponent<HealthAndShield>().IsAlive)
+        if (isAlive)
         {
-            if (Target != null && Target.GetComponent<HealthAndShield>().IsAlive)
+            HealLineRenderer.SetPosition(0, EnergyPoint.position);
+            if (GetComponent<HealthAndShield>().IsAlive)
             {
-                if (Vector3.Distance(Target.transform.position, gameObject.transform.position) > effectRange)
+                if (Target != null && Target.GetComponent<HealthAndShield>().IsAlive)
                 {
-                    moveToTarget();
+                    if (Vector3.Distance(Target.transform.position, gameObject.transform.position) > effectRange)
+                    {
+                        moveToTarget();
+                    }
+                    else
+                    {
+                        heal();
+                    }
+
                 }
                 else
                 {
-                    heal();
+                    seekTarget();
                 }
-
             }
             else
             {
-                seekTarget();
+                HealLineRenderer.SetPosition(1, EnergyPoint.position);
             }
-        }
-        else {
-            HealLineRenderer.SetPosition(1, EnergyPoint.position);
         }
     }
     void heal() {
@@ -73,16 +78,13 @@ public class DroneShield : MonoBehaviour
         Rb.AddForce(direction * speed*Time.fixedDeltaTime);
         HealLineRenderer.SetPosition(1, EnergyPoint.position);
     }
-  
-
     IEnumerator AIBurst() {
-        while (GetComponent<HealthAndShield>().IsAlive)
+        while (isAlive)
         {
             AICalculate();
             yield return new WaitForSeconds(AICalculateTime);
         }
     }
-
     void AICalculate() {
         if (Target != null)
         {
@@ -97,7 +99,6 @@ public class DroneShield : MonoBehaviour
         }
        
     }
-
     public void DamageOuterShield(float  damage) {
         shieldStrength -= damage;
         if (shieldStrength <= 0) {
@@ -105,7 +106,6 @@ public class DroneShield : MonoBehaviour
             StartCoroutine(shieldRecharge());
         }
     }
-
     IEnumerator shieldRecharge()
     {
 
@@ -115,7 +115,6 @@ public class DroneShield : MonoBehaviour
             outerShield.gameObject.SetActive(true);
         }
     }
-
     void seekTarget() {
         HealLineRenderer.SetPosition(1, EnergyPoint.position);
         //Debug.Log("seekTarget");
@@ -131,13 +130,15 @@ public class DroneShield : MonoBehaviour
 
         }
     }
-
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(gameObject.transform.position, detectRange);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(gameObject.transform.position, effectRange);
+    }
+    public void dead()
+    {
+        GetComponent<Rigidbody>().useGravity = true;
     }
 }

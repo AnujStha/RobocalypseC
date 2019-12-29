@@ -3,6 +3,7 @@ using UnityEngine;
 public class Robot1 : AIObjects_Ranged,IKillable
 {
 private GunPlaceHolder gunPlaceHolder;
+    public GameObject deadRobot;
     [Header("Status")]
     public bool found;
     // Start is called before the first frame update
@@ -47,6 +48,13 @@ private GunPlaceHolder gunPlaceHolder;
 
     public void dead()
     {
-        throw new System.NotImplementedException();
+        GameObject man= Instantiate(deadRobot, transform.position, transform.rotation);
+        is_alive = false;
+        Collider[] col = GetComponents<Collider>();
+        foreach (Collider collider in col)
+        {
+            collider.enabled = false;
+        }
+        Destroy(gameObject);
     }
 }

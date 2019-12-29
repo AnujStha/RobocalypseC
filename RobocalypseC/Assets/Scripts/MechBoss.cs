@@ -37,7 +37,7 @@ public class MechBoss : AIObjects_Ranged, IKillable
     public float messileCorrection;
     public float messileRandomOffset;
     public float messileAimAngle;
-    // Start is called before the first frame update
+    public GameObject DeadMechBoss;
     public override void Start()
     {
         base.Start();
@@ -181,9 +181,15 @@ public class MechBoss : AIObjects_Ranged, IKillable
         yield return new WaitForSeconds(time);
         ChooseAction();
     }
-    public void dead()
-    {
-
+    public void dead(){
+        Instantiate(DeadMechBoss, transform.position, transform.rotation);
+        is_alive = false;
+        Collider[] col = GetComponents<Collider>();
+        foreach (Collider collider in col)
+        {
+            collider.enabled = false;
+        }
+        Destroy(gameObject);
     }
 
 }

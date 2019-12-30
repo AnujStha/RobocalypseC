@@ -22,7 +22,6 @@ public class leet : AIObjects,IKillable
     {
         base.FixedUpdate();
     }
-
     public override void Attack()
     {
         if (!attacking)
@@ -47,7 +46,6 @@ public class leet : AIObjects,IKillable
         RestrictMoving = false;
         attacking = false;
     }
-
     public void dead()
     {
         Anim.SetTrigger("death");

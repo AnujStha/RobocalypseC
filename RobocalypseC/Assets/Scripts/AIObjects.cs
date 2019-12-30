@@ -102,7 +102,7 @@ public class AIObjects : MonoBehaviour
                 isGrounded = true;
         }
 
-        Anim.SetBool("inAir", !isGrounded);
+        //Anim.SetBool("inAir", !isGrounded);
         return isGrounded;
     }
     protected void gravity()

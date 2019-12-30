@@ -1,8 +1,4 @@
 ﻿//Author @ ANUJ SHRESTHA
-
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
@@ -12,10 +8,6 @@ public class Bullet : MonoBehaviour {
     public bool FromPlayer;
     public float healthDamageRatio;
     public float ShieldDamageRatio;
-
-
-
-
 	public virtual void Start () {
 
         Rigidbody bulletRB;
@@ -35,11 +27,8 @@ public class Bullet : MonoBehaviour {
         destroy();
     }
 	}
-
     public void destroy()
     {
         Destroy(gameObject);
     }
-
-    
 }

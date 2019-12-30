@@ -41,7 +41,7 @@ public class MechBoss : AIObjects_Ranged, IKillable
     public override void Start()
     {
         base.Start();
-        MechBossAIStart();
+
     }
     void Update() {
         if (AIStarted && firemode != 2)
@@ -63,6 +63,9 @@ public class MechBoss : AIObjects_Ranged, IKillable
                     ChooseAction();
                     break;
             }
+        }
+        if (!AIStarted && Vector3.Distance(player.transform.position, transform.position) < detectRange) {
+            MechBossAIStart();
         }
     }
     void fireMessile()

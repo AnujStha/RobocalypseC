@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a497774e4ebe04a96ce57a7cebf6ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 101
+  id: 100
   tip: {fileID: 7507935441151298621}
   active: 0
   Bullet: {fileID: 2218222207545543372, guid: 122c4b871bd3f24438a2977ecc014b50, type: 3}

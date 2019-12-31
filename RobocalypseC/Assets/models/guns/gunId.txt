@@ -2,10 +2,18 @@ Pistol-01XX;
 rifle-02XX;
 grenades-03XX;
 
-defaultPistol-0101;
+normal-XX0X;
+electric-XX1X;
+plasma-XX2X;
+
+defaultPistol-01X0;
 --------------------------------------------------------------------------
-plasmaRifle-0201;
-shotgunElectric-0202;
-smg-0203;
+default-02X0
+plasmaRifle-02X1;
+shotgun-02X2;
+smg-02X3;
+scoped-02X4
 --------------------------------------------------------------------------
 explosive grenades-0300;
+electricGrenades-0301;
+smoke-0302;

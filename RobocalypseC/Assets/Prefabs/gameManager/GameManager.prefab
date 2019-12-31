@@ -44,4 +44,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  Gravity: 70
+  shieldColour_: {r: 0, g: 0.18179062, b: 0.7169812, a: 1}
+  healthColour_: {r: 0.026657287, g: 0.6981132, b: 0, a: 1}
+  healthDepletion_: {r: 0.6981132, g: 0, b: 0, a: 1}
+  shieldDepletion_: {r: 0.25943398, g: 1, b: 0.9428955, a: 1}
+  poisionColour_: {r: 0.51705635, g: 0.764151, b: 0.09011213, a: 1}
+  GravityC: 80
+  PrimaryPowerups:
+  - {fileID: 1963936121184234467, guid: 9eb51b82269ed384c8da7098869b65c2, type: 3}
+  - {fileID: 8837005587407182747, guid: 52e58959e65236243b8d9bd248e8fae3, type: 3}
+  - {fileID: 9052115146336117792, guid: 2c7f8004aac9180418c93802936412fb, type: 3}
+  - {fileID: 6114546741564519177, guid: 67aae66f3ab229547ae83f95035f1dae, type: 3}
+  - {fileID: 5668832105924044771, guid: 6a61d558df6cb6f4e8d8e8e25cb07956, type: 3}
+  SecondaryPowerups:
+  - {fileID: 5604331684631886794, guid: 82fc696d7ccf45442bf50a124dd18e8d, type: 3}
+  GrenadePowerups:
+  - {fileID: 6230544544977374082, guid: e6eeb42c86cf5ff4a8407cdf8a3e29b0, type: 3}
+  - {fileID: 1610598835584977873, guid: fc80c80b74b88c94393c0cda15044f78, type: 3}
+  - {fileID: 2570944364342918604, guid: 444dfc1a0d1b5a3409ca81284a4d4b74, type: 3}
+  HealthPowerup: {fileID: 0}
+  ShieldPowerup: {fileID: 0}

@@ -97,7 +97,7 @@ public class GunPlaceHolderPlayer : GunPlaceHolder
     {
         base.LateUpdate();
     }
-    GameObject findWeaponByID(int id) {
+    public GameObject findWeaponByID(int id) {
         int type = id / 100;
         GameObject weapon = null;
         switch (type) {
@@ -138,18 +138,18 @@ public class GunPlaceHolderPlayer : GunPlaceHolder
 
         return weapon;
     }
-    void switchWeapon() {
+    public void switchWeapon() {
         if (holdingPrimary)
         {
             ActiveGun.GetComponent<gun>().activate(false);
-            ActiveGun = findWeaponByID(activePrimary);
+            ActiveGun = findWeaponByID(activeSecondary);
             ActiveGun.GetComponent<gun>().activate(true);
             firemode = ActiveGun.GetComponent<gun>().firemode;
             holdingPrimary = false;
         }
         else {
             ActiveGun.GetComponent<gun>().activate(false);
-            ActiveGun = findWeaponByID(activeSecondary);
+            ActiveGun = findWeaponByID(activePrimary);
             ActiveGun.GetComponent<gun>().activate(true);
             firemode = ActiveGun.GetComponent<gun>().firemode;
             holdingPrimary = true;

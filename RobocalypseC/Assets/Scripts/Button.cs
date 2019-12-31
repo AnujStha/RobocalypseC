@@ -3,10 +3,13 @@ public class Button :Interactable
 {
 
     public Switchable[] switchables;
+    public override void Start()
+    {
+        base.Start();
+    }
     override    
     public void InRange()
     {
-        Debug.Log("in range   ");
     }
     override
     public void interact()

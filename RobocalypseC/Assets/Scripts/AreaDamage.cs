@@ -13,7 +13,6 @@ public class AreaDamage : MonoBehaviour
         while (true)
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, range);
-            Debug.Log(colliders.Length);
             foreach (Collider col in colliders)
             {
                 if (col.CompareTag("Player") || col.CompareTag("Enemy") || col.CompareTag("Destroyable"))

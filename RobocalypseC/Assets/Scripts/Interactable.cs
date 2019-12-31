@@ -2,14 +2,13 @@
 using UnityEngine;
 public class Interactable : MonoBehaviour
 {
-    public gameManager manager;
     private float playerDistance;
     protected GameObject player;
     public float engageRange;
     public bool inRange;
     public virtual void Start()
     {
-        player = manager.Player;    
+        player = gameManager.player;    
     }
     private void Update()
     {
@@ -45,7 +44,7 @@ public class Interactable : MonoBehaviour
     {
 
     }
-    private void OnDrawGizmosSelected()
+    public virtual void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, engageRange);
     }

@@ -8,4 +8,4 @@ plasmaRifle-0201;
 shotgunElectric-0202;
 smg-0203;
 --------------------------------------------------------------------------
-explosive grenades-0301:
+explosive grenades-0300;

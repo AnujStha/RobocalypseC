@@ -12,12 +12,10 @@ public class leet : AIObjects,IKillable
 
 
     // Start is called before the first frame update
-    public override void Start()
+   public override void Start()
     {
         base.Start();
     }
-
-
    public override void FixedUpdate()
     {
         base.FixedUpdate();

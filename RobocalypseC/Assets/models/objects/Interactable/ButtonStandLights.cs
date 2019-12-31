@@ -5,7 +5,6 @@ public class ButtonStandLights : Indicator
     public GameObject greenLight, redLight;
     public override void ValueChanged()
     {
-        Debug.Log(status+"asd");
         if (status == 1) GreenLight();
         else RedLight();
     }

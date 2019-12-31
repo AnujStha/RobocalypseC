@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Grenades : MonoBehaviour {
 	public int grenadeID;
-	private Rigidbody grenadeRB;
+	protected Rigidbody grenadeRB;
 	public float timer;
 	public GameObject ExplosionEffect;
 	public bool isExploded;
@@ -18,9 +18,7 @@ public class Grenades : MonoBehaviour {
 	public float grenadeForce;
 	[Header("audio")]
 	private AudioSource audioSource;
-
-
-	void Start () {
+	public virtual void Start () {
 		grenadeRB = gameObject.GetComponent<Rigidbody > ();
 		Vector3 grenadeDirection = new Vector3 (0,0,Mathf.Lerp(Grenade_Force_min,Grenade_force_max,GrenadeAimTime) );
 		grenadeDirection = gameObject.transform.rotation*grenadeDirection;
@@ -29,15 +27,13 @@ public class Grenades : MonoBehaviour {
 		isExploded = false;
 		audioSource = GetComponent<AudioSource> ();
 	}
-	
-
-	void Update () {
+	public virtual void Update () {
 
 		timer -= Time.deltaTime;
 		if (timer < 0&&isExploded==false)  explode ();
 		
 	}
-	void explode(){
+	public virtual void explode(){
 		
 		isExploded = true;
 		GrenadeDamage ();
@@ -47,7 +43,6 @@ public class Grenades : MonoBehaviour {
 		Destroy (explosionEffect, 2);
 		Destroy (gameObject);
 	}
-
 	void GrenadeDamage(){
 		Collider []colliders=Physics.OverlapSphere(transform.position,range);
 		foreach (Collider col in colliders){

@@ -6,6 +6,7 @@ public class PickupsSecondary : Interactable
     public int id;
     public int ammo;
     public GameObject PUPanimation;
+    public pupCreater create;
     public override void Start()
     {
         PUPanimation = GameObject.Find("GameManager").GetComponent<gameManager>().SecondaryPowerups[id % 10];
@@ -33,6 +34,12 @@ public class PickupsSecondary : Interactable
         else
         {
             replacing = true;
+            ///
+            create.transform.position = transform.position;
+            gun g = holder.findWeaponByID(holder.activeSecondary).GetComponent<gun>();
+            create.id = g.id;
+            create.ammo = g.ammoInBag + g.ammoInMag;
+            g.ammoInMag = 0;
         }
         holder.activeSecondary = id;
         if (!holder.holdingPrimary)
@@ -46,7 +53,7 @@ public class PickupsSecondary : Interactable
         if (replacing)
         {
             holder.ActiveGun.GetComponent<gun>().ammoInBag = ammo;
-
+            create.Create();
         }
         else {
             holder.ActiveGun.GetComponent<gun>().ammoInBag += ammo;

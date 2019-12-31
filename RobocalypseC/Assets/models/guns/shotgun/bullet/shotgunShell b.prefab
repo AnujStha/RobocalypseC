@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7442606007361893186}
   - component: {fileID: 7057405500274809770}
   m_Layer: 0
-  m_Name: shotgunShell
+  m_Name: shotgunShell b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,5 +50,5 @@ MonoBehaviour:
   healthDamageRatio: 0
   ShieldDamageRatio: 0
   PalletCount: 6
-  pallet: {fileID: 115613946430677478, guid: 168148895e94a6648a3086a3a46d42b4, type: 3}
+  pallet: {fileID: 115613946430677478, guid: 2ced145800e399b4d905fafd85906e5b, type: 3}
   spread: 11.1

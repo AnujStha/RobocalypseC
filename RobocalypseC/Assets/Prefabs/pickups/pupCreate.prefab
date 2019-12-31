@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7418580443036472680
+--- !u!1 &6059190952323623767
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7442606007361893186}
-  - component: {fileID: 7057405500274809770}
+  - component: {fileID: 2988450190042786617}
+  - component: {fileID: 2779987591379464298}
   m_Layer: 0
-  m_Name: shotgunShell
+  m_Name: pupCreate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7442606007361893186
+--- !u!4 &2988450190042786617
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7418580443036472680}
+  m_GameObject: {fileID: 6059190952323623767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.9, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 11.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7057405500274809770
+--- !u!114 &2779987591379464298
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7418580443036472680}
+  m_GameObject: {fileID: 6059190952323623767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6777023fd139bf4c8f5d2eea47faa5a, type: 3}
+  m_Script: {fileID: 11500000, guid: b574fb4d3e4141446b51335227456b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 20
-  damage: 0
-  BulletLife: 0.7
-  FromPlayer: 0
-  healthDamageRatio: 0
-  ShieldDamageRatio: 0
-  PalletCount: 6
-  pallet: {fileID: 115613946430677478, guid: 168148895e94a6648a3086a3a46d42b4, type: 3}
-  spread: 11.1
+  ammo: 22
+  id: 202
+  primaryCreate: {fileID: 4873393797926204089, guid: 0c241b62c84f2e84fa83ad89e5bc2a1b,
+    type: 3}
+  SecondaryCreate: {fileID: 4499213625269560451, guid: e19e023185bc6e047940edca8381d63a,
+    type: 3}

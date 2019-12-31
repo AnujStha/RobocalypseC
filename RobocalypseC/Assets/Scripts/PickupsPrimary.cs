@@ -5,6 +5,7 @@ public class PickupsPrimary : Interactable
 {
     public int id;
     public int ammo;
+    public pupCreater create;
     private GameObject PUPanimation;
     public override void Start()
     {
@@ -24,7 +25,6 @@ public class PickupsPrimary : Interactable
     public override void interact()
     {
         base.interact();
-        int type = id / 100;
         GunPlaceHolderPlayer holder = gameManager.player.GetComponentInChildren<GunPlaceHolderPlayer>();
         bool replacing;
         if (holder.activePrimary == id)
@@ -33,6 +33,12 @@ public class PickupsPrimary : Interactable
         }
         else {
             replacing = true;
+            /////
+            gun g = holder.findWeaponByID(holder.activePrimary).GetComponent<gun>();
+            create.transform.position = transform.position;
+            create.id = g.id;
+            create.ammo = g.ammoInBag + g.ammoInMag;
+            g.ammoInMag = 0;
         }
         holder.activePrimary = id;
         if (holder.holdingPrimary)
@@ -46,6 +52,7 @@ public class PickupsPrimary : Interactable
         if (replacing)
         {
             holder.ActiveGun.GetComponent<gun>().ammoInBag = ammo;
+            create.Create();
         }
         else {
             holder.ActiveGun.GetComponent<gun>().ammoInBag += ammo;

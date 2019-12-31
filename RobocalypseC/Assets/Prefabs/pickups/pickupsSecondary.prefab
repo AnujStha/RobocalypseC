@@ -172,7 +172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   engageRange: 1.84
   inRange: 0
-  id: 100
-  ammo: 72
+  id: 110
+  ammo: 24
   PUPanimation: {fileID: -927199367670048503, guid: 40a840f379d450d4aa45ce8b449fa8f6,
     type: 3}
+  create: {fileID: 2779987591379464298, guid: f0972481a33acce428406934a884c8f5, type: 3}

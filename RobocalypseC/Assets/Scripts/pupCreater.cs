@@ -1,27 +1,59 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class pupCreater : MonoBehaviour
 {
     public int ammo,id;
-    public GameObject primaryCreate, SecondaryCreate;
+    public bool health, shield;
+    public float healthAmount, shieldAmount;
+    public GameObject primaryCreate, SecondaryCreate,GrenadeCreate,healthPUP,shieldPUP;
+    public bool createOnStart=false;
+    public void Start()
+    {
+        if (createOnStart) {
+            Create();
+        }
+    }
     public void Create()
     {
-        int type = id / 100;
-        if (type == 2)
+        if (!health && !shield)
         {
-            primary();
+            int type = id / 100;
+            if (type == 2)
+            {
+                primary();
+            }
+            else if (type == 1)
+            {
+                secondary();
+            }
+            else if (type == 3) {
+                grenades();
+            }
         }
-        else {
-            secondary();
+        if (health) {
+            healthPUP.GetComponent<HelthPower>().health = healthAmount;
+            Instantiate(healthPUP, transform.position, transform.rotation);
         }
+        if (shield) {
+            shieldPUP.GetComponent<ShieldPowerup>().shield = shieldAmount;
+            Instantiate(shieldPUP, transform.position, transform.rotation);
+        }
+            Destroy(gameObject);
+    }
+    void grenades() {
+        PickupsGrenades gk = GrenadeCreate.GetComponent<PickupsGrenades>();
+        gk.id = id;
+        gk.count = ammo;
+        GameObject PUP= Instantiate(GrenadeCreate, transform.position, transform.rotation);
+        
     }
     void primary() {
         PickupsPrimary pk= primaryCreate.GetComponent<PickupsPrimary>();
         pk.id = id;
         pk.ammo = ammo;
-        Instantiate(primaryCreate, transform.position, transform.rotation);
+        GameObject PUP= Instantiate(primaryCreate, transform.position, transform.rotation);
+        int type = (id / 10) % 10;
     }
     void secondary() {
         PickupsSecondary pk = SecondaryCreate.GetComponent<PickupsSecondary>();

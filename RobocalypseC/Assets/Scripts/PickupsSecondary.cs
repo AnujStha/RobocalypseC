@@ -6,7 +6,7 @@ public class PickupsSecondary : Interactable
     public int id;
     public int ammo;
     public GameObject PUPanimation;
-    public pupCreater create;
+    public GameObject creator;
     public override void Start()
     {
         PUPanimation = GameObject.Find("GameManager").GetComponent<gameManager>().SecondaryPowerups[id % 10];
@@ -20,12 +20,14 @@ public class PickupsSecondary : Interactable
             c = gameManager.shieldDepletion;
         else if (effect == 2)
             c = gameManager.poisionColour;
-        GetComponentInChildren<LineRenderer>().endColor = c;
+        GetComponentInChildren<LineRenderer>().startColor = c;
     }
     public override void interact()
     {
         base.interact();
         GunPlaceHolderPlayer holder = gameManager.player.GetComponentInChildren<GunPlaceHolderPlayer>();
+        GameObject c = Instantiate(creator, transform.position, transform.rotation);
+        pupCreater create = c.GetComponent<pupCreater>();
         bool replacing;
         if (holder.activeSecondary == id)
         {
@@ -35,7 +37,6 @@ public class PickupsSecondary : Interactable
         {
             replacing = true;
             ///
-            create.transform.position = transform.position;
             gun g = holder.findWeaponByID(holder.activeSecondary).GetComponent<gun>();
             create.id = g.id;
             create.ammo = g.ammoInBag + g.ammoInMag;

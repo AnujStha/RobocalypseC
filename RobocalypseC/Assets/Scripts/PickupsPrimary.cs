@@ -5,7 +5,7 @@ public class PickupsPrimary : Interactable
 {
     public int id;
     public int ammo;
-    public pupCreater create;
+    public GameObject creator;
     private GameObject PUPanimation;
     public override void Start()
     {
@@ -20,13 +20,17 @@ public class PickupsPrimary : Interactable
             c = gameManager.shieldDepletion;
         else if (effect == 2)
             c = gameManager.poisionColour;
-        GetComponentInChildren<LineRenderer>().endColor = c;
+        GetComponentInChildren<LineRenderer>().startColor = c;
+        
     }
     public override void interact()
     {
         base.interact();
         GunPlaceHolderPlayer holder = gameManager.player.GetComponentInChildren<GunPlaceHolderPlayer>();
+        GameObject c = Instantiate(creator, transform.position, transform.rotation);
+        pupCreater create = c.GetComponent<pupCreater>();
         bool replacing;
+        
         if (holder.activePrimary == id)
         {
             replacing = false;
@@ -35,7 +39,7 @@ public class PickupsPrimary : Interactable
             replacing = true;
             /////
             gun g = holder.findWeaponByID(holder.activePrimary).GetComponent<gun>();
-            create.transform.position = transform.position;
+
             create.id = g.id;
             create.ammo = g.ammoInBag + g.ammoInMag;
             g.ammoInMag = 0;

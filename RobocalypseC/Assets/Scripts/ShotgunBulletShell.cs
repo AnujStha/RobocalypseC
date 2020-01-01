@@ -19,6 +19,7 @@ public class ShotgunBulletShell : Bullet
             bulletScript.ShieldDamageRatio = ShieldDamageRatio;
             bulletScript.FromPlayer = FromPlayer;
         }
+        Destroy(gameObject);
     }
 
 }

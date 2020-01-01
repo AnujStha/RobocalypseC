@@ -52,7 +52,7 @@ public class gun : MonoBehaviour {
 	
 	}//Update
     public void shoot(bool fromPlayer) {
-
+        Debug.Log("shoot");
         if (FireReady&&!reloading){
             if (ammoInMag > 0)
             {
@@ -132,7 +132,8 @@ public class gun : MonoBehaviour {
         reloading = false;
 		gameObject.SetActive (command);
 		active = command;
-
+        //because ienumerator doesnt activate if switched
+        FireReady = true;
 
 	}
 	void NoAmmo(){

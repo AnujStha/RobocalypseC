@@ -44,10 +44,13 @@ public class PlayerController : MonoBehaviour,IKillable
     // Update is called once per frame
     void Update()
     {
-        move();
-        point_at_mouse();
-        //Debug.Log(verticalVelocity+" "+inAirtime);
-        gameObject.transform.position = new Vector3(0, transform.position.y, transform.position.z);
+        if (!gameManager.Paused)
+        {
+            move();
+            point_at_mouse();
+            //Debug.Log(verticalVelocity+" "+inAirtime);
+            gameObject.transform.position = new Vector3(0, transform.position.y, transform.position.z);
+        }
     }
     void move() {
         Anim = GetComponent<Animator>();

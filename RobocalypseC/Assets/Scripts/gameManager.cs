@@ -14,6 +14,7 @@ public class gameManager : MonoBehaviour
     public GameObject[] GrenadePowerups;
     public GameObject HealthPowerup;
     public GameObject ShieldPowerup;
+    public static bool Paused=false;
     private void Awake()
     {
         gameManager.Gravity = GravityC;

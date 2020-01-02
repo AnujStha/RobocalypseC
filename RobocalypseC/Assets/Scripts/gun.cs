@@ -32,13 +32,13 @@ public class gun : MonoBehaviour {
     public float damage;
     public float healthDamageRatio;
     public float shieldDamageRatio;
-
 	void Start(){
 		//gameObject.SetActive (false);
 		ammoInMag=ammoCapacityMag;
 		reloading = false;
 		ReloadCount = reloadTime;
         FireReady = true;
+        BulletAudioSource = GetComponent<AudioSource>();
 	}
 	void Update(){
 		
@@ -52,10 +52,10 @@ public class gun : MonoBehaviour {
 	
 	}//Update
     public void shoot(bool fromPlayer) {
-        Debug.Log("shoot");
         if (FireReady&&!reloading){
             if (ammoInMag > 0)
             {
+                playAudio();
                 //decrease bullet
                 ammoInMag --;
                 //add Bullet Property
@@ -146,9 +146,12 @@ public class gun : MonoBehaviour {
 		int randAudio=Random.Range(0,bulletFireSound.Length);
 		BulletAudioSource.clip=bulletFireSound[randAudio];
 		BulletAudioSource.Play ();
-	
 	}
-
+    public void PlayEmptyAudio() {
+        BulletAudioSource.Stop();
+        BulletAudioSource.clip = emptyAudio;
+        BulletAudioSource.Play();
+    }
 
 
 }

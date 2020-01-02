@@ -84,19 +84,24 @@ MonoBehaviour:
   Speed: 3
   jumpForce: 3
   rotationSmoother: 7
-  detectRange: 12.42
+  detectRange: 57.8
   attackRange: 1.8
   overheadClearance: 0.68
   GroundClearance: 0.01
   is_inAir: 0
-  Manager: {fileID: 0}
   is_walking: 0
   is_alive: 1
   movingPositive: 0
   attacking: 0
   attack1Time: 0.5
   attack2Time: 2
-  attack2Probability: 0
+  attack1HitTime: 0.3
+  attack2HitTime: 0.3
+  attack1Damage: 100
+  attack2Damage: 200
+  healthDamageRatio: 1.5
+  shieldDamageRatio: 1
+  attack2Probability: 0.324
 --- !u!114 &5785516849257226760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,11 +383,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: leet
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 157fe921a9c02af40bb72959701374a1,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 15b69adbe3289f047abd53afaf7fcb4b, type: 2}
     - target: {fileID: -4216859302048453862, guid: 157fe921a9c02af40bb72959701374a1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -453,6 +453,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.13855
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 157fe921a9c02af40bb72959701374a1,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 15b69adbe3289f047abd53afaf7fcb4b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 157fe921a9c02af40bb72959701374a1, type: 3}
 --- !u!4 &1526997510679259517 stripped

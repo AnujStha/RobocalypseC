@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour,IKillable
 {
     private GunPlaceHolder gunHolder;
-    public gameManager manager;
     private Animator Anim;
     [Range(0, 1)]
     [Header("Movement")]

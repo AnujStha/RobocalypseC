@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9081339918060591172}
   - component: {fileID: 3504184891109614235}
   m_Layer: 0
-  m_Name: SMGBullet
+  m_Name: SMGBulletBlue
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 610a10dce98844946aa1752607841eba, type: 2}
+  - {fileID: 2100000, guid: 84625be9f8e88c3408d436abe61dcc01, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,7 +75,7 @@ TrailRenderer:
   m_Time: 0.1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.05
+    widthMultiplier: 0.1
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -150,9 +150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299ecdff57eb1484ba34e28963b1a78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 20
+  bulletSpeed: 25
   damage: 0
-  BulletLife: 0.7
+  BulletLife: 0.6
   FromPlayer: 0
   healthDamageRatio: 0
   ShieldDamageRatio: 0
@@ -171,7 +171,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 98
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!135 &3504184891109614235
 SphereCollider:
   m_ObjectHideFlags: 0

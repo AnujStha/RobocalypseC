@@ -12,18 +12,11 @@ public class CameraFollow : MonoBehaviour {
 	[Header("verticalFollow")]
 	public bool verticalMove;
 	public float  verticalFollowOffset;
-
-
 	public float  heightBuffer;
-
-
 	void Start () {
-		transform.position = player.transform.position;
-
-
+        player = gameManager.player;
+        transform.position = player.transform.position;
 	}
-
-
 	void Update () {
 		if (player != null) {
 			if (verticalMove == true) {

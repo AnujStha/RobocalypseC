@@ -62,5 +62,7 @@ MonoBehaviour:
   - {fileID: 6230544544977374082, guid: e6eeb42c86cf5ff4a8407cdf8a3e29b0, type: 3}
   - {fileID: 1610598835584977873, guid: fc80c80b74b88c94393c0cda15044f78, type: 3}
   - {fileID: 2570944364342918604, guid: 444dfc1a0d1b5a3409ca81284a4d4b74, type: 3}
-  HealthPowerup: {fileID: 0}
-  ShieldPowerup: {fileID: 0}
+  HealthPowerup: {fileID: 3660964036412523963, guid: 4ed546fcb06ccec458a7df2106ee534b,
+    type: 3}
+  ShieldPowerup: {fileID: 1042456417955706024, guid: 30b4ee3c54e16c943b72552456ef387d,
+    type: 3}

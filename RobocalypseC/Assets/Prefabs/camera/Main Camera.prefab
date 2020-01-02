@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  Offset: {x: 30.76, y: 7.2, z: 7.87}
+  Offset: {x: 24, y: 7.2, z: 7.87}
   smoother: 1
-  verticalMove: 0
+  verticalMove: 1
   verticalFollowOffset: 0
-  heightBuffer: 0.39475274
+  heightBuffer: 0.45500517

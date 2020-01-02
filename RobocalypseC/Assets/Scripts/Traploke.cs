@@ -62,5 +62,6 @@ public class Traploke : AIObjects,IKillable
         foreach (Collider collider in col) {
             collider.enabled = false;
         }
+        Drop();
     }
 }

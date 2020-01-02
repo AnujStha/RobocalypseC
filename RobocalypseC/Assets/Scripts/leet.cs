@@ -62,5 +62,6 @@ public class leet : AIObjects,IKillable
         {
             collider.enabled = false;
         }
+        Drop();
     }
 }

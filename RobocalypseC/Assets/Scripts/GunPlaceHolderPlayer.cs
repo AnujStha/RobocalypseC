@@ -15,6 +15,7 @@ public class GunPlaceHolderPlayer : GunPlaceHolder
     private int firemode;
     private float GrenadeHoldTime;
     public float grenadeMaxHoldTime;
+    public GameObject line;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -28,6 +29,7 @@ public class GunPlaceHolderPlayer : GunPlaceHolder
     }
     private void Update()
     {
+        line.transform.position = ActiveGun.GetComponent<gun>().tip.position;
         if (Input.GetButtonDown("Switch")) {
             switchWeapon();
         }

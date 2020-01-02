@@ -157,10 +157,13 @@ MonoBehaviour:
   overheadClearance: 1.05
   GroundClearance: 0.1
   is_inAir: 0
-  Manager: {fileID: 0}
   is_walking: 0
   is_alive: 1
   movingPositive: 0
+  drop: {fileID: 6059190952323623767, guid: f0972481a33acce428406934a884c8f5, type: 3}
+  healthAndShieldDropChance: 0.38
+  WeaponDropChance: 0.72
+  UsingWeaponDropChance: 0.4
   targetSmoother: 0.4
   targetOffset: -0.02
   distanceBetweenPlayerOffset: 0

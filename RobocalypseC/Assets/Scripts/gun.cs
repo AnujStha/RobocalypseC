@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class gun : MonoBehaviour {
@@ -17,7 +16,7 @@ public class gun : MonoBehaviour {
     [Header("gunStatus")]
     private bool FireReady;
     public float fireRate;
-    [Range(0, 100)]
+    [Range(0, 10)]
     public float accuracy;
     [Header("reload")]
 	public float reloadTime;
@@ -59,7 +58,9 @@ public class gun : MonoBehaviour {
                 //decrease bullet
                 ammoInMag --;
                 //add Bullet Property
-                GameObject bullet = Instantiate(Bullet, tip.transform.position, tip.transform.rotation);
+                float deflect = Random.Range(10-accuracy, accuracy-10);
+                Vector3 shootDirection = new Vector3(tip.transform.rotation.eulerAngles.x + deflect, tip.transform.rotation.eulerAngles.y, tip.transform.rotation.eulerAngles.z);
+                GameObject bullet = Instantiate(Bullet, tip.transform.position, Quaternion.Euler(shootDirection));
                 Bullet bulletScript = bullet.GetComponent<Bullet>();
                 bulletScript.damage = damage;
                 bulletScript.healthDamageRatio = healthDamageRatio;
@@ -68,6 +69,7 @@ public class gun : MonoBehaviour {
                 StartCoroutine(HaltFire(1 / fireRate));
             }
             else {
+                PlayEmptyAudio();
                 reload();
             }
         }
@@ -152,6 +154,4 @@ public class gun : MonoBehaviour {
         BulletAudioSource.clip = emptyAudio;
         BulletAudioSource.Play();
     }
-
-
 }

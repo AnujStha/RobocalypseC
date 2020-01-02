@@ -56,5 +56,6 @@ private GunPlaceHolder gunPlaceHolder;
             collider.enabled = false;
         }
         Destroy(gameObject);
+        Drop();
     }
 }

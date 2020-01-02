@@ -14,6 +14,10 @@ public class gameManager : MonoBehaviour
     public GameObject[] GrenadePowerups;
     public GameObject HealthPowerup;
     public GameObject ShieldPowerup;
+    public float healthRecharge_, shieldRecharge_;
+    public int[] AmmoRechargePrimary;
+    public int[] ammorechargeSecondary;
+    public int[] rechargeGrenades;
     public static bool Paused=false;
     private void Awake()
     {

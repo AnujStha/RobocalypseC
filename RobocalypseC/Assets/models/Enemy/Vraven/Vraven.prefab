@@ -122,7 +122,15 @@ MonoBehaviour:
   is_walking: 0
   is_alive: 1
   movingPositive: 0
+  drop: {fileID: 6059190952323623767, guid: f0972481a33acce428406934a884c8f5, type: 3}
+  healthAndShieldDropChance: 0.3
+  WeaponDropChance: 0.39
+  UsingWeaponDropChance: 0.5
   attack1Time: 1.2
+  attack1hitTime: 0.3
+  attack1Damage: 200
+  healthDamageRatio: 1
+  shieldDamageRatio: 1
   attacking: 0
 --- !u!143 &5072080860576847401
 CharacterController:

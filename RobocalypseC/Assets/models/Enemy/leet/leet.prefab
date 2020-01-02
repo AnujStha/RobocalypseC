@@ -92,6 +92,10 @@ MonoBehaviour:
   is_walking: 0
   is_alive: 1
   movingPositive: 0
+  drop: {fileID: 6059190952323623767, guid: f0972481a33acce428406934a884c8f5, type: 3}
+  healthAndShieldDropChance: 0.43
+  WeaponDropChance: 0.9
+  UsingWeaponDropChance: 0.41
   attacking: 0
   attack1Time: 0.5
   attack2Time: 2
@@ -149,13 +153,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 4.59
-  m_Radius: 0.44
+  m_Height: 2.32
+  m_Radius: 0.72
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 2.35, z: 0}
+  m_Center: {x: 0, y: 0.97, z: 0.31}
 --- !u!1 &5785516849300083293
 GameObject:
   m_ObjectHideFlags: 0

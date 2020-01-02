@@ -34,12 +34,14 @@ public class vravern : AIObjects,IKillable
     public void dead()
     {
         Anim.SetTrigger("death");
+        Drop();
         is_alive = false;
         Collider[] col = GetComponents<Collider>();
         foreach (Collider collider in col)
         {
             collider.enabled = false;
         }
+
     }
     IEnumerator Damage(float time, float damage)
     {

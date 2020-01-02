@@ -28,6 +28,14 @@ public class AIObjects : MonoBehaviour
     protected bool DontCheckGround = false;
     private CharacterController Controller;
     public bool movingPositive;
+    [Header("drop")]
+    public GameObject drop;
+    [Range(0, 1)]
+    public float healthAndShieldDropChance;
+    [Range(0, 1)]
+    public float WeaponDropChance;
+    [Range(0, 1)]
+    public float UsingWeaponDropChance;
 
     public virtual void Start()
     {
@@ -42,7 +50,7 @@ public class AIObjects : MonoBehaviour
         {
             DistanceBetweenPlayerAndThis = Vector3.Distance(player.transform.position, transform.position);
             DummyChaseAtPlayer();
-            transform.position.Set(0, transform.position.y, transform.position.z);
+            transform.position=new Vector3(0, transform.position.y, transform.position.z);
         }
         gravity();
     }
@@ -168,5 +176,64 @@ public class AIObjects : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectRange);
+    }
+    protected void Drop() {
+
+        gameManager manager = GameObject.Find("GameManager").GetComponent<gameManager>();
+        if (Random.Range(0f, 1f) < healthAndShieldDropChance) {
+            GameObject hs=Instantiate(drop, transform.position, transform.rotation);
+            Debug.Log("ca");
+            pupCreater pup= hs.GetComponent<pupCreater>();
+            if (Random.Range(0, 2) == 0)
+            {
+                pup.health = true;
+                pup.healthAmount = manager.healthRecharge_;
+            }
+            else {
+                pup.shield = true;
+                pup.shieldAmount = manager.shieldRecharge_;
+            }
+            pup.Create();
+        }
+        if (Random.Range(0f, 1f) < WeaponDropChance) {
+            Debug.Log("yup");
+            GameObject hs = Instantiate(drop, transform.position, transform.rotation);
+            pupCreater pup = hs.GetComponent<pupCreater>();
+            if (Random.Range(0f, 1f) < UsingWeaponDropChance)
+            {
+                    int Gunid = gameManager.player.GetComponentInChildren<GunPlaceHolderPlayer>().activePrimary;
+                    pup.id = Gunid;
+                    int type = Gunid % 10;
+                    pup.ammo = manager.AmmoRechargePrimary[type];
+            }
+            else {
+                int choice = Random.Range(1,4);
+                int variant = Random.Range(0, 3);
+                Debug.Log(variant);
+                int ammoFill=0;
+                int type=0;
+                int id=0;
+                switch (choice) {
+                    case 1:
+                        type = Random.Range(0, 5);
+                        id = 200 + variant * 10 + type;
+                        ammoFill = manager.AmmoRechargePrimary[type];
+                        break;
+                    case 2:
+                        type = 0;
+                        id = 100 + variant * 10 + type;
+                        ammoFill = manager.ammorechargeSecondary[type];
+                        break;
+                    case 3:
+                        type = Random.Range(0, 3);
+                        id = 300 + type;
+                        ammoFill = manager.rechargeGrenades[type];
+                        break;
+                }
+                pup.id = id;
+                pup.ammo = ammoFill;
+            }
+            pup.Create();
+        }
     }
 }

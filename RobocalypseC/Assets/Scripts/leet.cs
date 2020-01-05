@@ -8,7 +8,7 @@ public class leet : AIObjects,IKillable
     public float attack1Time;
     public float attack2Time;
     public float attack1HitTime, attack2HitTime;
-    public float attack1Damage, attack2Damage,healthDamageRatio,shieldDamageRatio;
+    public float attack1Damage, attack2Damage,healthDamageRatio,shieldDamageRatio,attackRangePlus;
     [Range(0, 1)]
     public float attack2Probability;
     // Start is called before the first frame update
@@ -49,7 +49,7 @@ public class leet : AIObjects,IKillable
     IEnumerator Damage(float time, float damage) {
 
         yield return new WaitForSeconds(time);
-        if (DistanceBetweenPlayerAndThis < attackRange) {
+        if (DistanceBetweenPlayerAndThis < attackRange+attackRangePlus) {
             player.GetComponent<HealthAndShield>().damage(damage,healthDamageRatio,shieldDamageRatio);
         }
     }

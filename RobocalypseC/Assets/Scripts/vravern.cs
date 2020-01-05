@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class vravern : AIObjects,IKillable
 {
-    public float attack1Time,attack1hitTime,attack1Damage,healthDamageRatio,shieldDamageRatio;
+    public float attack1Time,attack1hitTime,attack1Damage,healthDamageRatio,shieldDamageRatio,attackRangePlus;
     public bool attacking=false;
     // Start is called before the first frame update
     public override void Start()
@@ -31,8 +31,9 @@ public class vravern : AIObjects,IKillable
         RestrictMoving = false;
         attacking = false;
     }
-    public void dead()
+    public virtual void dead()
     {
+        Debug.Log("daea");
         Anim.SetTrigger("death");
         Drop();
         is_alive = false;
@@ -47,7 +48,7 @@ public class vravern : AIObjects,IKillable
     {
 
         yield return new WaitForSeconds(time);
-        if (DistanceBetweenPlayerAndThis < attackRange)
+        if (DistanceBetweenPlayerAndThis < attackRange+attackRangePlus)
         {
             player.GetComponent<HealthAndShield>().damage(damage, healthDamageRatio, shieldDamageRatio);
         }

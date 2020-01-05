@@ -8,7 +8,7 @@ public class Traploke : AIObjects,IKillable
     public float attack1Time;
     public float attack2Time;
     public float attack1HitTime, attack2HitTime,attack1Range,attack2Range;
-    public float attack1Damage, attack2Damage, healthDamageRatio, shieldDamageRatio;
+    public float attack1Damage, attack2Damage, healthDamageRatio, shieldDamageRatio,attackRangePlus;
     [Range(0,1)]
     public float attack2Probability;
     public override void Start()
@@ -49,7 +49,7 @@ public class Traploke : AIObjects,IKillable
     {
 
         yield return new WaitForSeconds(time);
-        if (DistanceBetweenPlayerAndThis < range)
+        if (DistanceBetweenPlayerAndThis < range+attackRangePlus)
         {
             player.GetComponent<HealthAndShield>().damage(damage, healthDamageRatio, shieldDamageRatio);
         }

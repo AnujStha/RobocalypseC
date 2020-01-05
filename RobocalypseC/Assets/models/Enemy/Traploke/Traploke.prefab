@@ -94,8 +94,8 @@ MonoBehaviour:
   is_alive: 1
   movingPositive: 0
   drop: {fileID: 6059190952323623767, guid: f0972481a33acce428406934a884c8f5, type: 3}
-  healthAndShieldDropChance: 0.31
-  WeaponDropChance: 0.22
+  healthAndShieldDropChance: 0.53
+  WeaponDropChance: 0.42
   UsingWeaponDropChance: 0.51
   attacking: 0
   attack1Time: 0.8

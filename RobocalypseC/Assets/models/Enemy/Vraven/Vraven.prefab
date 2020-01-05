@@ -111,10 +111,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   piviot: {fileID: 5072080859610944737}
   Anim: {fileID: 7895673969201028168}
-  Speed: 4
+  Speed: 6
   jumpForce: 3
-  rotationSmoother: 7
-  detectRange: 42.09
+  rotationSmoother: 6
+  detectRange: 54.6
   attackRange: 2.4
   overheadClearance: 1.59
   GroundClearance: 0.01
@@ -131,6 +131,7 @@ MonoBehaviour:
   attack1Damage: 200
   healthDamageRatio: 1
   shieldDamageRatio: 1
+  attackRangePlus: 1
   attacking: 0
 --- !u!143 &5072080860576847401
 CharacterController:

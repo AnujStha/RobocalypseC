@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299ecdff57eb1484ba34e28963b1a78d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 40
+  bulletSpeed: 35
   damage: 0
   BulletLife: 0.6
   FromPlayer: 0

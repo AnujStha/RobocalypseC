@@ -178,11 +178,9 @@ public class AIObjects : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectRange);
     }
     protected void Drop() {
-
         gameManager manager = GameObject.Find("GameManager").GetComponent<gameManager>();
         if (Random.Range(0f, 1f) < healthAndShieldDropChance) {
             GameObject hs=Instantiate(drop, transform.position, transform.rotation);
-            Debug.Log("ca");
             pupCreater pup= hs.GetComponent<pupCreater>();
             if (Random.Range(0, 2) == 0)
             {
@@ -195,40 +193,44 @@ public class AIObjects : MonoBehaviour
             }
             pup.Create();
         }
-        if (Random.Range(0f, 1f) < WeaponDropChance) {
-            Debug.Log("yup");
+        float chance= Random.Range(0f, 1f);
+
+        if (chance < WeaponDropChance) {
+            Debug.Log(chance+"  "+WeaponDropChance);
             GameObject hs = Instantiate(drop, transform.position, transform.rotation);
             pupCreater pup = hs.GetComponent<pupCreater>();
             if (Random.Range(0f, 1f) < UsingWeaponDropChance)
             {
+                if (Random.Range(0, 4) != 0)
+                {
                     int Gunid = gameManager.player.GetComponentInChildren<GunPlaceHolderPlayer>().activePrimary;
                     pup.id = Gunid;
                     int type = Gunid % 10;
                     pup.ammo = manager.AmmoRechargePrimary[type];
+                }
+                else {
+                    int type = Random.Range(0, 3);
+                    int id = 300 + type;
+                    int ammoFill = manager.rechargeGrenades[type];
+                    pup.id = id;
+                    pup.ammo = ammoFill;
+                }
             }
             else {
-                int choice = Random.Range(1,4);
+                int choice = Random.Range(0,5);
                 int variant = Random.Range(0, 3);
-                Debug.Log(variant);
                 int ammoFill=0;
                 int type=0;
                 int id=0;
-                switch (choice) {
-                    case 1:
-                        type = Random.Range(0, 5);
-                        id = 200 + variant * 10 + type;
-                        ammoFill = manager.AmmoRechargePrimary[type];
-                        break;
-                    case 2:
+                if (choice != 0) {
+                    type = Random.Range(0, 5);
+                    id = 200 + variant * 10 + type;
+                    ammoFill = manager.AmmoRechargePrimary[type];
+                }
+                else { 
                         type = 0;
                         id = 100 + variant * 10 + type;
                         ammoFill = manager.ammorechargeSecondary[type];
-                        break;
-                    case 3:
-                        type = Random.Range(0, 3);
-                        id = 300 + type;
-                        ammoFill = manager.rechargeGrenades[type];
-                        break;
                 }
                 pup.id = id;
                 pup.ammo = ammoFill;

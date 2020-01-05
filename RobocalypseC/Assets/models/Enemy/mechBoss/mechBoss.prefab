@@ -57,13 +57,17 @@ MonoBehaviour:
   jumpForce: 25
   rotationSmoother: 7
   detectRange: 70.63
-  attackRange: 36
+  attackRange: 30
   overheadClearance: 1.21
   GroundClearance: 0.1
   is_inAir: 0
   is_walking: 0
   is_alive: 1
   movingPositive: 0
+  drop: {fileID: 0}
+  healthAndShieldDropChance: 0
+  WeaponDropChance: 0
+  UsingWeaponDropChance: 0
   targetSmoother: 2
   targetOffset: 0.07
   distanceBetweenPlayerOffset: -0.03
@@ -124,12 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 742805b915aa50f46ac3548ab1ba2fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
-  MaxHealth: 1000
+  health: 10000
+  MaxHealth: 10000
   Shield: 0
   MaxShield: 500
   IsAlive: 0
-  shieldRechargeRate: 1
+  shieldRechargeRate: 20
   healthRechargeRate: 1
   healthRechargeDelay: 1
   shieldRechargeDelay: 1

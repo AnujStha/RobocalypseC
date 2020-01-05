@@ -81,7 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   piviot: {fileID: 5785516849300083292}
   Anim: {fileID: 8915719770991870983}
-  Speed: 3
+  Speed: 7
   jumpForce: 3
   rotationSmoother: 7
   detectRange: 57.8
@@ -94,8 +94,8 @@ MonoBehaviour:
   movingPositive: 0
   drop: {fileID: 6059190952323623767, guid: f0972481a33acce428406934a884c8f5, type: 3}
   healthAndShieldDropChance: 0.43
-  WeaponDropChance: 0.9
-  UsingWeaponDropChance: 0.41
+  WeaponDropChance: 0.75
+  UsingWeaponDropChance: 0.25
   attacking: 0
   attack1Time: 0.5
   attack2Time: 2

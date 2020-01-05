@@ -48,7 +48,11 @@ public class gun : MonoBehaviour {
 				reload ();
 			}
 		}
-	
+        if (noAmmo) {
+            if (ammoInBag > 0 || ammoInMag > 0) {
+                noAmmo = false;
+            }
+        }
 	}//Update
     public void shoot(bool fromPlayer) {
         if (FireReady&&!reloading){
@@ -90,38 +94,42 @@ public class gun : MonoBehaviour {
 
         //UI
         //reloadingUI.Reloading = true;
-        if (ammoInBag > 0)
+        if (ammoInMag < ammoCapacityMag)
         {
-            if (ReloadCount > 0)
+            if (ammoInBag > 0)
             {
-                reloading = true;
+                if (ReloadCount > 0)
+                {
+                    reloading = true;
+                }
+                else
+                {
+                    reloading = false;
+                    //UI
+                    //reloadingUI.Reloading=false;
+                    //
+                    if (ammoInBag >= ammoCapacityMag - ammoInMag)
+                    {
+                        ammoInBag -= ammoCapacityMag - ammoInMag;
+                        ammoInMag = ammoCapacityMag;
+                    }
+                    else if (ammoInBag > 0)
+                    {
+                        ammoInMag += ammoInBag;
+                        ammoInBag = 0;
+
+                    }
+                    if (infiniteAmmo)
+                    {
+                        ammoInBag += ammoCapacityMag;
+                    }
+                    ReloadCount = reloadTime;
+                }
             }
             else
             {
-                reloading = false;
-                //UI
-                //reloadingUI.Reloading=false;
-                //
-                if (ammoInBag >= ammoCapacityMag - ammoInMag)
-                {
-                    ammoInBag -= ammoCapacityMag - ammoInMag;
-                    ammoInMag = ammoCapacityMag;
-                }
-                else if (ammoInBag > 0)
-                {
-                    ammoInMag += ammoInBag;
-                    ammoInBag = 0;
-
-                }
-                if (infiniteAmmo)
-                {
-                    ammoInBag += ammoCapacityMag;
-                }
-                ReloadCount = reloadTime;
+                NoAmmo();
             }
-        }
-        else {
-            NoAmmo();
         }
 	}
 	public void haltReload(){
@@ -130,7 +138,7 @@ public class gun : MonoBehaviour {
 	
 	}
 	public void activate(bool command){
-        ReloadCount = 1;
+        ReloadCount = reloadTime;
         reloading = false;
 		gameObject.SetActive (command);
 		active = command;
@@ -140,8 +148,6 @@ public class gun : MonoBehaviour {
 	}
 	void NoAmmo(){
 		noAmmo = true;
-		//noAmmoUI.NoAmmo = true;
-
 	}
 	public void playAudio (){
 		BulletAudioSource.Stop ();

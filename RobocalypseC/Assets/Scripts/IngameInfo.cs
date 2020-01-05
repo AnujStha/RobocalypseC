@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class IngameInfo : MonoBehaviour
 {
-    public Image health, shield, ammo,reloadBar;
-    public float healthMaxUI, healthMinUI,shieldMaxUI,shieldMinUI;
+    public Image health, shield, ammo, reloadBar;
+    public float healthMaxUI, healthMinUI, shieldMaxUI, shieldMinUI;
     public GameObject reloading, noAmmo;
     public TextMeshProUGUI ammoInBag;
     private GameObject player;
     private GunPlaceHolderPlayer gunPlaceHolderReference;
     private HealthAndShield healthAndShieldReference;
+    public GameObject[] primaryIcon;
+    public GameObject[] secondaryIcon;
+    public GameObject[] grenadeIcons;
+    private int primaryIconIndex=0,secondaryIconIndex=0,grenadeIconIndex=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +55,32 @@ public class IngameInfo : MonoBehaviour
         string text = "Gun:" + gunPlaceHolderReference.ActiveGun.GetComponent<gun>().id + "Grenade" + gunPlaceHolderReference.ActiveGrenade + ":" + gunPlaceHolderReference.grenadeCount[activeGrenadeIndex%100];
         weapon.text = text;
         */
+        int activePrimary = gunPlaceHolderReference.activePrimary;
+        int activeSecondary = gunPlaceHolderReference.activeSecondary;
+        int activeGrenade = gunPlaceHolderReference.ActiveGrenade;
+        ////////
+        ///
+        int primaryEffect = (activePrimary % 100) / 10;
+        int primaryGun = activePrimary % 10;
+        if (primaryIconIndex != primaryGun * 3 + primaryEffect) {
+            primaryIcon[primaryIconIndex].SetActive(false);
+            primaryIcon[primaryGun * 3 + primaryEffect].SetActive(true);
+            primaryIconIndex = primaryGun * 3 + primaryEffect;
+        }
+        int secondaryEffect = (activeSecondary % 100) / 10;
+        int secondaryGun = activeSecondary % 10;
+        if (secondaryIconIndex != secondaryGun * 3 + secondaryEffect)
+        {
+            secondaryIcon[secondaryIconIndex].SetActive(false);
+            secondaryIcon[secondaryGun * 3 + secondaryEffect].SetActive(true);
+            secondaryIconIndex = secondaryGun * 3 + secondaryEffect;
+        }
+        int grenadeIndex = activeGrenade % 10;
+        if (grenadeIconIndex != grenadeIndex) {
+            grenadeIcons[grenadeIconIndex].SetActive(false);
+            grenadeIcons[grenadeIndex].SetActive(true);
+            grenadeIconIndex = grenadeIndex;
+        }
     }
     void reloadingAndNoAmmo() {/*
         gun g= gunPlaceHolderReference.ActiveGun.GetComponent<gun>();

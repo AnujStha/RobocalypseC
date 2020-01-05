@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DroneShield : MonoBehaviour,IKillable
 {
-    public gameManager gameManager;
     public GameObject Player;
     public float AICalculateTime;
     public float speed;
@@ -23,15 +22,13 @@ public class DroneShield : MonoBehaviour,IKillable
     public bool isAlive=true;
     
     // Start is called before the first frame update
-    private void Awake(){
-        Player = gameManager.Player;
+    void Start()
+    {
+        Player = gameManager.player;
         shieldStrength = MaxShieldStrength;
         outerShield = GetComponentInChildren<droneOuterShield>();
         outerShield.ShieldOf = this;
         Rb = GetComponent<Rigidbody>();
-    }
-    void Start()
-    {
         StartCoroutine(AIBurst());
         ForceField.transform.localScale = new Vector3(effectRange * 2, effectRange * 2, effectRange * 2);
         HealLineRenderer.SetPosition(1, EnergyPoint.position);

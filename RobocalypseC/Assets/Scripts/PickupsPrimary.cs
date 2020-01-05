@@ -17,11 +17,12 @@ public class PickupsPrimary : Interactable
         if (effect == 0)
             c = Color.white;
         else if (effect == 1)
-            c = gameManager.shieldDepletion;
+            c = gameManager.shieldColour;
         else if (effect == 2)
-            c = gameManager.poisionColour;
+            c = gameManager.healthColour;
         GetComponentInChildren<LineRenderer>().startColor = c;
-        
+        GetComponentInChildren<LineRenderer>().endColor = c;
+
     }
     public override void interact()
     {

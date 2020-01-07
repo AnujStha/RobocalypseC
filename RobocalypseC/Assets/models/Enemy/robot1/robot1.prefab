@@ -152,8 +152,8 @@ MonoBehaviour:
   Speed: 3
   jumpForce: 25
   rotationSmoother: 7
-  detectRange: 35.28
-  attackRange: 22.4
+  detectRange: 63.15
+  attackRange: 39.5
   overheadClearance: 1.05
   GroundClearance: 0.1
   is_inAir: 0
@@ -305,7 +305,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

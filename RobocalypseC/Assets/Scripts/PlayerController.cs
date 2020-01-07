@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour,IKillable
             {
                 if (overhead_check())
                 {
-                    Debug.Log("struck"); ;
                     inAirtime = 0;
                     initialVelocity = 0;
                 }
@@ -224,6 +223,6 @@ public class PlayerController : MonoBehaviour,IKillable
     }//check if key is with player
     public void dead()
     {
-        Debug.Log("U r dead NOOB");
+        Anim.SetTrigger("dead");
     }
 }

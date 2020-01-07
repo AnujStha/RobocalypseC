@@ -39,7 +39,6 @@ public class HealthAndShield : MonoBehaviour
         shieldDepletionReference = MaxShield;
         healthBarShowCounter = healthBarShowTime;
     }
-
     private void Awake()
     {
         HealthRechargeActive = true;
@@ -48,7 +47,6 @@ public class HealthAndShield : MonoBehaviour
         health = MaxHealth;
         Shield = MaxShield;
     }
-
     void FixedUpdate()
     {
         if (healthBarPresent)
@@ -77,10 +75,11 @@ public class HealthAndShield : MonoBehaviour
         }
 
     }
-
     public void damage(float damage, float healthDamageRatio, float ShieldDamageRatio) {
+        Debug.Log("called");
         if (IsAlive)
         {
+
             if (healthBarPresent)
             {
                 healthBarShowCounter = healthBarShowTime;
@@ -98,8 +97,10 @@ public class HealthAndShield : MonoBehaviour
             }
             else
             {
+
                 if (Shield != 0)
                 {
+
                     FlyingTextMake(shieldDepletionColour, ((int)Shield).ToString());
                     damage -= Shield / ShieldDamageRatio;
                     Shield = 0;

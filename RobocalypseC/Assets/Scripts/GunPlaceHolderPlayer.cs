@@ -29,61 +29,71 @@ public class GunPlaceHolderPlayer : GunPlaceHolder
     }
     private void Update()
     {
-        line.transform.position = ActiveGun.GetComponent<gun>().tip.position;
-        if (Input.GetButtonDown("Switch")) {
-            switchWeapon();
-        }
-        if (Input.GetButtonDown("Reload")) {
-            ActiveGun.GetComponent<gun>().reload();
-        }
-        if (Input.GetButton("Grenade")) {
-            if (GrenadeHoldTime < grenadeMaxHoldTime)
-                GrenadeHoldTime += Time.deltaTime;
-        }
-        if (Input.GetButtonUp("Grenade"))
+        if (playerSc.isAlive)
         {
-            Transform tip = ActiveGun.GetComponent<gun>().tip.transform;
-            if (grenadeCount[ActiveGrenade % 300] > 0)
+            line.transform.position = ActiveGun.GetComponent<gun>().tip.position;
+            if (Input.GetButtonDown("Switch"))
             {
-                Grenades G = Instantiate(findWeaponByID(ActiveGrenade), tip.position, tip.rotation).GetComponent<Grenades>();
-                G.GrenadeAimTime = GrenadeHoldTime / grenadeMaxHoldTime;
-                GrenadeHoldTime = 0;
-                grenadeCount[ActiveGrenade % 300]--;
+                switchWeapon();
             }
-            if (grenadeCount[ActiveGrenade % 300] < 1) {
+            if (Input.GetButtonDown("Reload"))
+            {
+                ActiveGun.GetComponent<gun>().reload();
+            }
+            if (Input.GetButton("Grenade"))
+            {
+                if (GrenadeHoldTime < grenadeMaxHoldTime)
+                    GrenadeHoldTime += Time.deltaTime;
+            }
+            if (Input.GetButtonUp("Grenade"))
+            {
+                Transform tip = ActiveGun.GetComponent<gun>().tip.transform;
+                if (grenadeCount[ActiveGrenade % 300] > 0)
+                {
+                    Grenades G = Instantiate(findWeaponByID(ActiveGrenade), tip.position, tip.rotation).GetComponent<Grenades>();
+                    G.GrenadeAimTime = GrenadeHoldTime / grenadeMaxHoldTime;
+                    GrenadeHoldTime = 0;
+                    grenadeCount[ActiveGrenade % 300]--;
+                }
+                if (grenadeCount[ActiveGrenade % 300] < 1)
+                {
+                    SwitchGrenade();
+                }
+            }
+            switch (firemode)
+            {
+                case 1:
+                    if (Input.GetButton("Fire1"))
+                    {
+                        shoot();
+                        playerSc.isShooting = true;
+                    }
+                    else
+                    {
+                        playerSc.isShooting = false;
+                    }
+                    break;
+
+                case 2:
+                    if (Input.GetButtonDown("Fire1"))
+                    {
+                        shoot();
+                        playerSc.isShooting = true;
+                    }
+                    else
+                    {
+                        playerSc.isShooting = false;
+                    }
+                    break;
+
+
+            }
+            if (Input.GetButtonDown("SwitchGrenade"))
+            {
                 SwitchGrenade();
             }
         }
-        switch (firemode) {
-            case 1:
-                if (Input.GetButton("Fire1"))
-                {
-                    shoot();
-                    playerSc.isShooting = true;
-                }
-                else {
-                    playerSc.isShooting = false;
-                }
-                break;
-
-            case 2:
-                if (Input.GetButtonDown("Fire1"))
-                {
-                    shoot();
-                    playerSc.isShooting = true;
-                }
-                else
-                {
-                    playerSc.isShooting = false;
-                }
-                break;
-
-
         }
-        if (Input.GetButtonDown("SwitchGrenade")) {
-            SwitchGrenade();
-        }
-    }
     void SwitchGrenade() {
         int currentGrenade = ActiveGrenade;
         currentGrenade %= 300;

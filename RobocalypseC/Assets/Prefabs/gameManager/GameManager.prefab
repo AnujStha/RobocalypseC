@@ -44,12 +44,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  shieldColour_: {r: 0, g: 0.18179062, b: 0.7169812, a: 1}
+  shieldColour_: {r: 0, g: 0.36323023, b: 1, a: 1}
   healthColour_: {r: 0.026657287, g: 0.6981132, b: 0, a: 1}
   healthDepletion_: {r: 0.6981132, g: 0, b: 0, a: 1}
   shieldDepletion_: {r: 0.25943398, g: 1, b: 0.9428955, a: 1}
   poisionColour_: {r: 0.51705635, g: 0.764151, b: 0.09011213, a: 1}
-  GravityC: 80
+  GravityC: 120
   PrimaryPowerups:
   - {fileID: 1963936121184234467, guid: 9eb51b82269ed384c8da7098869b65c2, type: 3}
   - {fileID: 8837005587407182747, guid: 52e58959e65236243b8d9bd248e8fae3, type: 3}
@@ -66,3 +66,8 @@ MonoBehaviour:
     type: 3}
   ShieldPowerup: {fileID: 1042456417955706024, guid: 30b4ee3c54e16c943b72552456ef387d,
     type: 3}
+  healthRecharge_: 500
+  shieldRecharge_: 500
+  AmmoRechargePrimary: 640000006400000014000000fa00000019000000
+  ammorechargeSecondary: 64000000
+  rechargeGrenades: 030000000300000003000000

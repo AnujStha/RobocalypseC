@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
     public GameObject creditsWindow;
     public GameObject exitConfirmationWindow;
     public GameObject levelChoice;
+    public sceneLoader sceneLoader;
     public void StartGame(){
         ShowLevelChoice();    
     }
@@ -70,12 +71,15 @@ public class MainMenu : MonoBehaviour
         exitConfirmationWindow.SetActive(false);
     }
     void StartLevel1() {
+        sceneLoader.loadScene(1);
         Debug.Log("Start level 1");
     }
     void StartLevel2() {
+        sceneLoader.loadScene(1);
         Debug.Log("Start level 2");
     }
     void StartPracticeLevel() {
+        sceneLoader.loadScene(3);
         Debug.Log("startPracticeLevel");
     }
 }

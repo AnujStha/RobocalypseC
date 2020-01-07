@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour,IKillable
     [Header("Movement")]
     public float moveDirection;
     public float WalkSpeed;
+    public bool isAlive=true;
     public float RunSpeed;
     private float Speed;
     private float inAirtime = 0;
@@ -43,7 +44,7 @@ public class PlayerController : MonoBehaviour,IKillable
     // Update is called once per frame
     void Update()
     {
-        if (!gameManager.Paused)
+        if (!gameManager.Paused&&isAlive)
         {
             move();
             point_at_mouse();
@@ -224,5 +225,7 @@ public class PlayerController : MonoBehaviour,IKillable
     public void dead()
     {
         Anim.SetTrigger("dead");
+        Anim.SetBool("isDead", true);
+        isAlive = false;
     }
 }

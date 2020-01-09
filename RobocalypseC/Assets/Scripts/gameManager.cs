@@ -64,6 +64,8 @@ public class gameManager : MonoBehaviour
             gunHolder.grenadeCount[0] = data.GrenadeCount[0];
             gunHolder.grenadeCount[1] = data.GrenadeCount[1];
             gunHolder.grenadeCount[2] = data.GrenadeCount[2];
+            gunHolder.switchWeapon();
+            gunHolder.switchWeapon();
         }
 
     }

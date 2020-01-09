@@ -54,8 +54,8 @@ MonoBehaviour:
   ammoCapacityMag: 10
   ammoInMag: 100
   ammoInBag: 30
-  fireRate: 2
-  accuracy: 10.2
+  fireRate: 1.2
+  accuracy: 9.63
   reloadTime: 1
   ReloadCount: 1
   reloading: 0
@@ -63,7 +63,7 @@ MonoBehaviour:
   bulletFireSound: []
   emptyAudio: {fileID: 0}
   BulletAudioSource: {fileID: 0}
-  damage: 300
+  damage: 250
   healthDamageRatio: 1
   shieldDamageRatio: 1
 --- !u!1 &6214724454948325855
@@ -178,12 +178,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.13444255
       objectReference: {fileID: 0}
-    - target: {fileID: 7098276011194100477, guid: 8126dd2ae580c5f44b3ad1557b4a685e,
+    - target: {fileID: 9171594686214590184, guid: 8126dd2ae580c5f44b3ad1557b4a685e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 645ddc08b8024dc459b4ab27a65270f5, type: 2}
-    - target: {fileID: 9171594686214590184, guid: 8126dd2ae580c5f44b3ad1557b4a685e,
+    - target: {fileID: 7098276011194100477, guid: 8126dd2ae580c5f44b3ad1557b4a685e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

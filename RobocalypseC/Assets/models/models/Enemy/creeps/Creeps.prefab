@@ -378,10 +378,10 @@ MonoBehaviour:
   is_alive: 1
   movingPositive: 0
   drop: {fileID: 6059190952323623767, guid: f0972481a33acce428406934a884c8f5, type: 3}
-  healthAndShieldDropChance: 0.7
-  WeaponDropChance: 0.576
-  UsingWeaponDropChance: 0.465
-  grenadeDropChance: 0.331
+  healthAndShieldDropChance: 0.773
+  WeaponDropChance: 0.643
+  UsingWeaponDropChance: 0.355
+  grenadeDropChance: 0.386
   gun: {fileID: 1828111221891966}
   aimOffset: 1.99
   cracked: {fileID: 1174103961762586, guid: 465a0b8f6294e1f46af324d64a02f340, type: 3}

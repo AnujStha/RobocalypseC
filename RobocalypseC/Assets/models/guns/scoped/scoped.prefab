@@ -85,8 +85,8 @@ MonoBehaviour:
   ammoCapacityMag: 10
   ammoInMag: 100
   ammoInBag: 30
-  fireRate: 3
-  accuracy: 10.2
+  fireRate: 1.2
+  accuracy: 9.63
   reloadTime: 1
   ReloadCount: 1
   reloading: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bac18a4be3b87be44a0fde99f33bd196, type: 3}
   emptyAudio: {fileID: 8300000, guid: cd8cb04aa0984c14087b931da8e3586d, type: 3}
   BulletAudioSource: {fileID: 0}
-  damage: 300
+  damage: 250
   healthDamageRatio: 1
   shieldDamageRatio: 1
 --- !u!82 &-6362492539832454523

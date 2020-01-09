@@ -472,8 +472,8 @@ PrefabInstance:
       propertyPath: messagePass
       value: 
       objectReference: {fileID: 1764982206}
-    - target: {fileID: 1137404285, guid: 303126a38e8505e4fb9a16bcc81b526d, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 1443414934, guid: 303126a38e8505e4fb9a16bcc81b526d, type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

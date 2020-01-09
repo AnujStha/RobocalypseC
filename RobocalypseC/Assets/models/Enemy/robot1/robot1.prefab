@@ -161,9 +161,9 @@ MonoBehaviour:
   is_alive: 1
   movingPositive: 0
   drop: {fileID: 6059190952323623767, guid: f0972481a33acce428406934a884c8f5, type: 3}
-  healthAndShieldDropChance: 0.443
-  WeaponDropChance: 0.72
-  UsingWeaponDropChance: 0.4
+  healthAndShieldDropChance: 0.48
+  WeaponDropChance: 0.763
+  UsingWeaponDropChance: 0.271
   grenadeDropChance: 0.405
   targetSmoother: 0.4
   targetOffset: -0.02
@@ -186,7 +186,7 @@ MonoBehaviour:
   health: 1000
   MaxHealth: 1000
   Shield: 0
-  MaxShield: 1200
+  MaxShield: 2000
   IsAlive: 0
   shieldRechargeRate: 1
   healthRechargeRate: 1
@@ -624,6 +624,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: robot1
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: de0a9c27227a69e4eb6cd53921512823,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7732eabbeb283b04ea0ef7dde6ce3234, type: 2}
     - target: {fileID: -4216859302048453862, guid: de0a9c27227a69e4eb6cd53921512823,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -694,11 +699,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.0019636967
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: de0a9c27227a69e4eb6cd53921512823,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 7732eabbeb283b04ea0ef7dde6ce3234, type: 2}
     - target: {fileID: 4839843737020799540, guid: de0a9c27227a69e4eb6cd53921512823,
         type: 3}
       propertyPath: m_LocalPosition.x

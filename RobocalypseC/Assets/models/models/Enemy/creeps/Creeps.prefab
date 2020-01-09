@@ -236,8 +236,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.94, y: 1.24, z: 0.72}
-  m_Center: {x: 0, y: 0.58, z: 0}
+  m_Size: {x: 0.94, y: 1.57, z: 1.11}
+  m_Center: {x: 0, y: 1.09, z: 0}
 --- !u!143 &143066057215999678
 CharacterController:
   m_ObjectHideFlags: 0
@@ -250,7 +250,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.76
-  m_Radius: 0.39
+  m_Radius: 0.45
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -277,9 +277,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 30
+  MaxDistance: 70.8
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -369,8 +369,8 @@ MonoBehaviour:
   Speed: 6
   jumpForce: 0
   rotationSmoother: 7
-  detectRange: 10.97
-  attackRange: 8.18
+  detectRange: 19.84
+  attackRange: 15.61
   overheadClearance: 1.05
   GroundClearance: 0.06
   is_inAir: 0
@@ -378,9 +378,10 @@ MonoBehaviour:
   is_alive: 1
   movingPositive: 0
   drop: {fileID: 6059190952323623767, guid: f0972481a33acce428406934a884c8f5, type: 3}
-  healthAndShieldDropChance: 0
-  WeaponDropChance: 0
-  UsingWeaponDropChance: 0
+  healthAndShieldDropChance: 0.7
+  WeaponDropChance: 0.576
+  UsingWeaponDropChance: 0.465
+  grenadeDropChance: 0.331
   gun: {fileID: 1828111221891966}
   aimOffset: 1.99
   cracked: {fileID: 1174103961762586, guid: 465a0b8f6294e1f46af324d64a02f340, type: 3}
@@ -5637,7 +5638,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5403c62941e7a0c48a48f25926bb19aa, type: 3}
   emptyAudio: {fileID: 8300000, guid: cd8cb04aa0984c14087b931da8e3586d, type: 3}
   BulletAudioSource: {fileID: 0}
-  damage: 100
+  damage: 30
   healthDamageRatio: 1
   shieldDamageRatio: 1
 --- !u!1 &1881450588269804

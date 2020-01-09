@@ -8,9 +8,12 @@ public class MainMenu : MonoBehaviour
     public GameObject creditsWindow;
     public GameObject exitConfirmationWindow;
     public GameObject levelChoice;
+    public GameObject gunInfo;
+    public GameObject controls;
     public sceneLoader sceneLoader;
+    public Continue messagePass;
     public void StartGame(){
-        ShowLevelChoice();    
+        ShowLevelChoice();
     }
     public void Level1() {
         StartLevel1();
@@ -46,6 +49,22 @@ public class MainMenu : MonoBehaviour
     public void ExitConfirmationNo() {
         CloseExitConfirmationBox();
     }
+    public void Guninfo() {
+        gunInfo.SetActive(true);
+        controls.SetActive(true);
+    }
+    public void Controls() {
+        controls.SetActive(true);
+        gunInfo.SetActive(false);
+    }
+    public void Continue(){
+        SaveData data = SaveSystem.loadPlayer();
+        if (data != null) {
+            int level = data.level;
+            messagePass.continueLevel = true;
+            sceneLoader.loadScene(level);
+        }
+    }
     void ShowLevelChoice() {
         levelChoice.SetActive(true);
     }
@@ -71,14 +90,17 @@ public class MainMenu : MonoBehaviour
         exitConfirmationWindow.SetActive(false);
     }
     void StartLevel1() {
+        messagePass.continueLevel = false;
         sceneLoader.loadScene(1);
         Debug.Log("Start level 1");
     }
     void StartLevel2() {
-        sceneLoader.loadScene(1);
+        messagePass.continueLevel = false;
+        sceneLoader.loadScene(2);
         Debug.Log("Start level 2");
     }
     void StartPracticeLevel() {
+        messagePass.continueLevel = false;
         sceneLoader.loadScene(3);
         Debug.Log("startPracticeLevel");
     }

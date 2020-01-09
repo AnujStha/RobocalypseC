@@ -1,4 +1,4 @@
-﻿
+﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
@@ -7,6 +7,9 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject helpWindow;
     public GameObject exitConfirmationWindow;
+    public GameObject gunInfo;
+    public GameObject controls;
+    public sceneLoader SceneLoader;
     void Update()
     {
         if (Input.GetButtonDown("Pause")) {
@@ -34,7 +37,10 @@ public class PauseMenu : MonoBehaviour
     }
     public void ExitConfirmationYes()
     {
-        Debug.Log("Exit");
+        Time.timeScale = 1;
+        gameManager.Paused = false;
+        save();
+        SceneLoader.loadScene(0);
     }
     public void ExitConfirmationNo()
     {
@@ -44,6 +50,14 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0;
         gameManager.Paused = true;
+    }
+    public void GunInfo() {
+        gunInfo.SetActive(true);
+        controls.SetActive(false);
+    }
+    public void Controls(){
+        gunInfo.SetActive(false);
+        controls.SetActive(true);
     }
     void ResumeGame() {
         pauseMenu.SetActive(false);
@@ -67,4 +81,11 @@ public class PauseMenu : MonoBehaviour
     {
         exitConfirmationWindow.SetActive(false);
     }
+    void save() {
+        if (SceneManager.GetActiveScene().buildIndex != 3)
+        {
+            GameObject player = gameManager.player;
+            SaveSystem.SaveGame(player, player.GetComponentInChildren<GunPlaceHolderPlayer>(), player.GetComponent<HealthAndShield>(), SceneManager.GetActiveScene().buildIndex);
+        }
+        }
 }

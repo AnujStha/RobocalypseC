@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class MechBoss : AIObjects_Ranged, IKillable
 {
+    private AudioSource audioPlayer;
+    public AudioClip messileAudio;
+    public AudioClip bulletAudio;
+    public AudioClip eBulletAudio;
     public Animator anim;
     [Range(0, 1)]
     public float rightRotation;
@@ -22,17 +26,20 @@ public class MechBoss : AIObjects_Ranged, IKillable
     public GameObject bullet;
     public float bulletFireRate;
     public float bulletStateTime;
+    public float bulletDamage,bulletHealthDamageRatio,bulletShieldDamageRatio;
     [Header ("explosive")]
     public Transform explosiveBulletTip;
     public GameObject explosiveBullet;
     public float explosiveBulletFireRate;
     public float explosiveBulletStateTime;
+    public float explosiveBulletDamage,EBulletHealthDamageRatio,EBulletShieldDamageRatio;
     [Header("messile")]
     private int MessileState;//0-aim 1-shoot 3-exit
     public float messileAimTime, MessileShootTime;
     private float bulletTriggerCounter = 0;
     public Transform messileTip;
     public GameObject messile;
+    public float messileDamage,messileHealthDamageRatio,messileShieldDamageRatio;
     public float messileFireRate;
     public float messileCorrection;
     public float messileRandomOffset;
@@ -40,6 +47,7 @@ public class MechBoss : AIObjects_Ranged, IKillable
     public GameObject DeadMechBoss;
     public override void Start()
     {
+        audioPlayer = GetComponent<AudioSource>();
         base.Start();
 
     }
@@ -72,8 +80,13 @@ public class MechBoss : AIObjects_Ranged, IKillable
     {
         if (bulletTriggerCounter <= 0)
         {
+            audioPlayer.clip = messileAudio;
+            audioPlayer.Play();
             GameObject m= Instantiate(messile, messileTip.transform.position,transform.rotation);
             parabolicBullet pb = m.GetComponent<parabolicBullet>();
+            pb.damage = messileDamage;
+            pb.healthDamageRatio = messileHealthDamageRatio;
+            pb.ShieldDamageRatio = messileShieldDamageRatio;
             pb.distance = Mathf.Abs( DistanceBetweenPlayerAndThis+Random.Range(-messileRandomOffset,messileRandomOffset)+messileCorrection);
             pb.gravity = gameManager.Gravity;
             pb.FromPlayer = false;
@@ -132,8 +145,13 @@ public class MechBoss : AIObjects_Ranged, IKillable
     void DefaultBullet() {
         if (bulletTriggerCounter <= 0)
         {
+            audioPlayer.clip = bulletAudio;
+            audioPlayer.Play();
             Bullet b= Instantiate(bullet, bulletTip.transform.position,bulletTip.transform.rotation).GetComponent<Bullet>();
             b.FromPlayer=false;
+            b.damage = bulletDamage;
+            b.healthDamageRatio = bulletHealthDamageRatio;
+            b.ShieldDamageRatio = bulletShieldDamageRatio;
             bulletTriggerCounter = 1 / bulletFireRate;
         }
         else
@@ -145,8 +163,13 @@ public class MechBoss : AIObjects_Ranged, IKillable
     void ExplosiveBullet() {
         if (bulletTriggerCounter <= 0)
         {
+            audioPlayer.clip = eBulletAudio;
+            audioPlayer.Play();
             Bullet b= Instantiate(explosiveBullet, explosiveBulletTip.transform.position,explosiveBulletTip.transform.rotation).GetComponent<Bullet>();
             b.FromPlayer = false;
+            b.damage = explosiveBulletDamage;
+            b.healthDamageRatio = EBulletHealthDamageRatio;
+            b.ShieldDamageRatio = EBulletShieldDamageRatio;
             bulletTriggerCounter = 1 / explosiveBulletFireRate;
         }
         else {
@@ -194,5 +217,4 @@ public class MechBoss : AIObjects_Ranged, IKillable
         }
         Destroy(gameObject);
     }
-
 }

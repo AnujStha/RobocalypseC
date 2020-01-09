@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour,IKillable
     public float WalkSpeed;
     public bool isAlive=true;
     public float RunSpeed;
-    private float Speed;
+    public float Speed;
     private float inAirtime = 0;
     public float Gravity;
     public float jumpForce;
@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour,IKillable
     // Start is called before the first frame update
     void Start()
     {
+        Anim = GetComponent<Animator>();
+        Controller = GetComponent<CharacterController>();
         gunHolder = GetComponentInChildren<GunPlaceHolder>();
         Gravity = gameManager.Gravity;
     }

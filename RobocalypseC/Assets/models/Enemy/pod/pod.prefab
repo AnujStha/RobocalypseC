@@ -85,11 +85,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  MaxHealth: 1000
+  MaxHealth: 1200
   Shield: 0
-  MaxShield: 1000
+  MaxShield: 1500
   IsAlive: 1
-  shieldRechargeRate: 2
+  shieldRechargeRate: 4
   healthRechargeRate: 5
   healthRechargeDelay: 2
   shieldRechargeDelay: 2
@@ -126,6 +126,7 @@ MonoBehaviour:
     type: 3}
   openTime: 1
   spawnPoint: {fileID: 8215870894974717170}
+  Animation: 1
 --- !u!1 &516812401342887984
 GameObject:
   m_ObjectHideFlags: 0

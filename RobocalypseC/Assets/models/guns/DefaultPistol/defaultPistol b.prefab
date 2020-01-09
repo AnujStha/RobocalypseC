@@ -80,7 +80,7 @@ MonoBehaviour:
   active: 0
   Bullet: {fileID: 2218222207545543372, guid: 122c4b871bd3f24438a2977ecc014b50, type: 3}
   firemode: 2
-  infiniteAmmo: 0
+  infiniteAmmo: 1
   ammoCapacityMag: 100
   ammoInMag: 100
   ammoInBag: 100

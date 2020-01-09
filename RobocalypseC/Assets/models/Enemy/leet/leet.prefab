@@ -95,7 +95,8 @@ MonoBehaviour:
   drop: {fileID: 6059190952323623767, guid: f0972481a33acce428406934a884c8f5, type: 3}
   healthAndShieldDropChance: 0.43
   WeaponDropChance: 0.75
-  UsingWeaponDropChance: 0.25
+  UsingWeaponDropChance: 0.305
+  grenadeDropChance: 0.297
   attacking: 0
   attack1Time: 0.5
   attack2Time: 2
@@ -105,6 +106,7 @@ MonoBehaviour:
   attack2Damage: 200
   healthDamageRatio: 1.5
   shieldDamageRatio: 1
+  attackRangePlus: 0
   attack2Probability: 0.324
 --- !u!114 &5785516849257226760
 MonoBehaviour:
@@ -119,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1000
-  MaxHealth: 1000
+  MaxHealth: 500
   Shield: 0
   MaxShield: 500
   IsAlive: 0

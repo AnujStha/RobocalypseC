@@ -7,7 +7,7 @@ public class IngameInfo : MonoBehaviour
     public Image health, shield, ammo, reloadBar;
     public float healthMaxUI, healthMinUI, shieldMaxUI, shieldMinUI;
     public GameObject reloading, noAmmo;
-    public TextMeshProUGUI ammoInBag;
+    public TextMeshProUGUI ammoInBag,grenadeCount;
     private GameObject player;
     private GunPlaceHolderPlayer gunPlaceHolderReference;
     private HealthAndShield healthAndShieldReference;
@@ -49,6 +49,10 @@ public class IngameInfo : MonoBehaviour
         float ammoAmount = g.ammoInMag*1f / (g.ammoCapacityMag);
         ammo.fillAmount = ammoAmount;
         ammoInBag.text = g.ammoInBag.ToString();
+        int activeGrenadeIndex = gunPlaceHolderReference.ActiveGrenade;
+        activeGrenadeIndex %= 10;
+        int GrenadeNumber=gunPlaceHolderReference.grenadeCount[activeGrenadeIndex];
+        grenadeCount.text = GrenadeNumber.ToString();
     }
     void weaponUpdate() {/*
         int activeGrenadeIndex = gunPlaceHolderReference.ActiveGrenade;

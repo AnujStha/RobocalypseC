@@ -9,7 +9,9 @@ public class HelthPower : Interactable
     }
     public override void InRange()
     {
-        gameManager.player.GetComponent<HealthAndShield>().recharge(health, 0);
+        HealthAndShield player= gameManager.player.GetComponent<HealthAndShield>();
+        if(player.health<player.MaxHealth)
+        player.recharge(health, 0);
         Destroy(gameObject);
     }
 }

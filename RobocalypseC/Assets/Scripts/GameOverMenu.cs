@@ -1,10 +1,11 @@
-﻿
+﻿using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine;
 public class GameOverMenu : MonoBehaviour
 {
     public GameObject menu,buttons;
     private PlayerController player;
+    private bool started = false;
     public sceneLoader sceneLoader;
     public float delayTime;
     private void Start()
@@ -13,16 +14,17 @@ public class GameOverMenu : MonoBehaviour
     }
     private void Update()
     {
-        if (!player.isAlive) {
+        if (!player.isAlive&&started==false) {
+            started = true;
             menu.SetActive(true);
             StartCoroutine(buttondelay());   
         }
     }
     public void MainMenu() {
-        Debug.Log("MainMenu");
         sceneLoader.loadScene(0);
     }
     public void Restart() {
+        sceneLoader.loadScene(SceneManager.GetActiveScene().buildIndex);
         Debug.Log("Restart");
     }
     public void Exit() {

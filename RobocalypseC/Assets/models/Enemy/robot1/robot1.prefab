@@ -161,9 +161,10 @@ MonoBehaviour:
   is_alive: 1
   movingPositive: 0
   drop: {fileID: 6059190952323623767, guid: f0972481a33acce428406934a884c8f5, type: 3}
-  healthAndShieldDropChance: 0.35
+  healthAndShieldDropChance: 0.443
   WeaponDropChance: 0.72
   UsingWeaponDropChance: 0.4
+  grenadeDropChance: 0.405
   targetSmoother: 0.4
   targetOffset: -0.02
   distanceBetweenPlayerOffset: 0
@@ -185,7 +186,7 @@ MonoBehaviour:
   health: 1000
   MaxHealth: 1000
   Shield: 0
-  MaxShield: 500
+  MaxShield: 1200
   IsAlive: 0
   shieldRechargeRate: 1
   healthRechargeRate: 1

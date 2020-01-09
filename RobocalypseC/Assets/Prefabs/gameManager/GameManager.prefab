@@ -49,7 +49,7 @@ MonoBehaviour:
   healthDepletion_: {r: 0.6981132, g: 0, b: 0, a: 1}
   shieldDepletion_: {r: 0.25943398, g: 1, b: 0.9428955, a: 1}
   poisionColour_: {r: 0.51705635, g: 0.764151, b: 0.09011213, a: 1}
-  GravityC: 120
+  GravityC: 140
   PrimaryPowerups:
   - {fileID: 1963936121184234467, guid: 9eb51b82269ed384c8da7098869b65c2, type: 3}
   - {fileID: 8837005587407182747, guid: 52e58959e65236243b8d9bd248e8fae3, type: 3}
@@ -68,6 +68,6 @@ MonoBehaviour:
     type: 3}
   healthRecharge_: 500
   shieldRecharge_: 500
-  AmmoRechargePrimary: 640000006400000014000000fa00000019000000
+  AmmoRechargePrimary: c8000000c800000028000000f401000032000000
   ammorechargeSecondary: 64000000
-  rechargeGrenades: 030000000300000003000000
+  rechargeGrenades: 020000000200000002000000

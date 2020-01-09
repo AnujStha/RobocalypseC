@@ -7,8 +7,9 @@ public class ShieldPowerup :Interactable
         base.Start();
     }
     public override void InRange()
-    {
-        gameManager.player.GetComponent<HealthAndShield>().recharge(0,shield );
+    { HealthAndShield player = gameManager.player.GetComponent<HealthAndShield>();
+        if (player.Shield < player.MaxShield) 
+         player.recharge(0,shield );
         Destroy(gameObject);
     }
 }

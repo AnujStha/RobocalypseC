@@ -17,8 +17,8 @@ public class BOT0 : AIObjects,IKillable
     {
         Instantiate(cracked, transform.position, transform.rotation);
         Destroy(gameObject);
+        Drop();
     }
-
     void point() {
         Vector3 aim = new Vector3(player.transform.position.x, player.transform.position.y + aimOffset, player.transform.position.z);
         gun.transform.LookAt(aim);

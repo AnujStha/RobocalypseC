@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grenadeID: 300
-  timer: 3
+  timer: 1.5
   ExplosionEffect: {fileID: 1367231532811202, guid: a545a0e9c3cb8444387a25c49f168c39,
     type: 3}
   isExploded: 0

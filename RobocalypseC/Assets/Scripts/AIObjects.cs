@@ -36,6 +36,8 @@ public class AIObjects : MonoBehaviour
     public float WeaponDropChance;
     [Range(0, 1)]
     public float UsingWeaponDropChance;
+    [Range(0, 1)]
+    public float grenadeDropChance;
 
     public virtual void Start()
     {
@@ -194,27 +196,15 @@ public class AIObjects : MonoBehaviour
             pup.Create();
         }
         float chance= Random.Range(0f, 1f);
-
         if (chance < WeaponDropChance) {
-            Debug.Log(chance+"  "+WeaponDropChance);
             GameObject hs = Instantiate(drop, transform.position, transform.rotation);
             pupCreater pup = hs.GetComponent<pupCreater>();
             if (Random.Range(0f, 1f) < UsingWeaponDropChance)
             {
-                if (Random.Range(0, 4) != 0)
-                {
                     int Gunid = gameManager.player.GetComponentInChildren<GunPlaceHolderPlayer>().activePrimary;
                     pup.id = Gunid;
                     int type = Gunid % 10;
                     pup.ammo = manager.AmmoRechargePrimary[type];
-                }
-                else {
-                    int type = Random.Range(0, 3);
-                    int id = 300 + type;
-                    int ammoFill = manager.rechargeGrenades[type];
-                    pup.id = id;
-                    pup.ammo = ammoFill;
-                }
             }
             else {
                 int choice = Random.Range(0,5);
@@ -235,6 +225,18 @@ public class AIObjects : MonoBehaviour
                 pup.id = id;
                 pup.ammo = ammoFill;
             }
+            pup.Create();
+        }
+        chance = Random.Range(0f, 1f);
+        if (chance < grenadeDropChance)
+        {
+            GameObject hs = Instantiate(drop, transform.position, transform.rotation);
+            pupCreater pup = hs.GetComponent<pupCreater>();
+            int type = Random.Range(0, 3);
+            int id = 300 + type;
+            int ammoFill = manager.rechargeGrenades[type];
+            pup.id = id;
+            pup.ammo = ammoFill;
             pup.Create();
         }
     }

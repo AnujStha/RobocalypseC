@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   piviot: {fileID: 5072080859610944737}
   Anim: {fileID: 7895673969201028168}
-  Speed: 6
+  Speed: 6.5
   jumpForce: 3
   rotationSmoother: 6
   detectRange: 54.6
@@ -123,9 +123,10 @@ MonoBehaviour:
   is_alive: 1
   movingPositive: 0
   drop: {fileID: 6059190952323623767, guid: f0972481a33acce428406934a884c8f5, type: 3}
-  healthAndShieldDropChance: 0.3
+  healthAndShieldDropChance: 0.535
   WeaponDropChance: 0.39
   UsingWeaponDropChance: 0.5
+  grenadeDropChance: 0.384
   attack1Time: 1.2
   attack1hitTime: 0.3
   attack1Damage: 200
@@ -164,9 +165,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1000
-  MaxHealth: 1000
+  MaxHealth: 2000
   Shield: 0
-  MaxShield: 500
+  MaxShield: 1000
   IsAlive: 0
   shieldRechargeRate: 1
   healthRechargeRate: 1

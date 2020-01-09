@@ -11,20 +11,24 @@ public class pod : MonoBehaviour,IKillable
     public float openTime;
     public Transform spawnPoint;
     private bool isAlive=true;
+    public bool Animation=true;
     private GameObject player;
     // Start is called before the first frame update
 
     void Start()
     {
         player = gameManager.player;
-        spawnCounter = spawnInterval;
+        spawnCounter = 0;
+        if(Animation)
         anim = GetComponent<Animator>();    
     }
     void Open() {
+        if(Animation)
         anim.SetTrigger("open");
 
     }
     void Close() {
+        if(Animation)
         anim.SetTrigger("close");
     }
     IEnumerator StartSpawn() {
@@ -52,6 +56,7 @@ public class pod : MonoBehaviour,IKillable
     void IKillable.dead()
     {
         isAlive = false;
+        if(Animation)
         anim.SetTrigger("dead");
     }
     void OnDrawGizmosSelected() {

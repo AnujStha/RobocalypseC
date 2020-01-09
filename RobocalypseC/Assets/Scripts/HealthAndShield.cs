@@ -38,6 +38,8 @@ public class HealthAndShield : MonoBehaviour
         HealthDepletionReference = MaxHealth;
         shieldDepletionReference = MaxShield;
         healthBarShowCounter = healthBarShowTime;
+        shieldDepletionColour = gameManager.shieldDepletion;
+        healthDepletionColour = gameManager.healthDepletion;
     }
     private void Awake()
     {
@@ -76,7 +78,6 @@ public class HealthAndShield : MonoBehaviour
 
     }
     public void damage(float damage, float healthDamageRatio, float ShieldDamageRatio) {
-        Debug.Log("called");
         if (IsAlive)
         {
 
@@ -146,21 +147,18 @@ public class HealthAndShield : MonoBehaviour
         yield return new WaitForSeconds(shieldRechargeDelay);
         ShieldRechargeActive = true;
     }
-
     IEnumerator HealthRechargeDelayCounter()
     {
         HealthRechargeActive = false;
         yield return new WaitForSeconds(healthRechargeDelay);
         HealthRechargeActive = true;
     }
-
     IEnumerator showReference() {
         healthDepletionMeterFollow = false;
         yield return new WaitForSeconds(depletionShowTime);
         healthDepletionMeterFollow = true;
 
     }
-
     void FlyingTextMake(Color col, string val)
     {
         if (healthBarPresent)

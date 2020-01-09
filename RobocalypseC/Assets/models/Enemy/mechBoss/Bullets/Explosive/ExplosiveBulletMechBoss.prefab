@@ -4801,7 +4801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 9
-  damage: 0
+  damage: 100
   BulletLife: 4
   FromPlayer: 0
   healthDamageRatio: 0

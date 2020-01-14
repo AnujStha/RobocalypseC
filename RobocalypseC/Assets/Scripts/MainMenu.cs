@@ -54,7 +54,7 @@ public class MainMenu : MonoBehaviour
         controls.SetActive(true);
     }
     public void Controls() {
-        controls.SetActive(true);
+        controls.SetActive(false);
         gunInfo.SetActive(false);
     }
     public void Continue(){
